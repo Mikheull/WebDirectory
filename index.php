@@ -31,28 +31,24 @@ function formatBytes($bytes, $precision = 2) {
 <ul>
     <?php
     
-    
-    $folder = scandir(".");
-    foreach($folder as $f){
-        if($f !== "."  && $f !== ".." && $f !== "index.php"){
+    foreach(new DirectoryIterator(dirname(__FILE__)) as $f ){
+        if ( !$f->isDot() && $f->getFilename() !== "index.php"){
+
             ?>
             <div class="item">
                 <div class="infos">
                     <li> <span><i class="fas fa-folder"></i></span> <a href="<?php echo $f ;?>/"><?php echo $f ;?></a> </li>
-                    <?php
-                        $dir = new SplFileInfo($f);
-                        
-                    ?>
+ 
                     <span class="time">
                         <?php 
-                            echo date('d/m/Y H:i:s', $dir->getMTime());
+                            echo date('d/m/Y H:i:s', $f->getMTime());
                         ;?>
                     </span>
                     <span class="size">
                         <?php 
-                            $size = $dir->getSize();
+                            $size = $f->getSize();
                             
-                            echo formatBytes($size);
+                            echo $f->getSize();
                         ;?>
                     </span>
                 </div>
