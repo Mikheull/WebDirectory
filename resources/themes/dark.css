@@ -1,1 +1,35 @@
-a
+body {background: #252527}
+a:visited, a:link {color: #FFF}
+
+.centered {width: 70vw;margin: 0 15vw}
+.btn {background: #FFF;padding: 5px;border-radius: 6px;color: #2a2a2e}
+.btn span {font-size: .7em;}
+.btn-light {background: #2a2a2e;border: solid #FFF 1px;color: #FFF}
+
+
+
+header {height: 50px;background: #202020;border-bottom: solid 2px #353535;float: left;}
+header .title {font-size: 20px;margin: 15px 0;float: left;color: #FFF}
+header .actions {float: right;color: #FFF}
+header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
+
+
+
+.container {margin: 2vh 0;float: left;color: #FFF}
+.container .head {padding: 15px 0;float: left;width: 100%;text-transform: uppercase;font-size: .7em;font-weight: bold}
+.container .head .columns {float: left;}
+
+.container .item a {padding: 10px 0;float: left;width: 100%}
+.container .item .columns {float: left;}
+.container .item .title i{padding: 0 5px}
+.container .item .title span{padding: 0 15px;color: rgba(255, 255, 255, 0.7)}
+.container .item:hover a {background: #FFF;border-radius: 3px;color: #2a2a2e;}
+.container .item:hover .title span {color: #2a2a2e;}
+
+.container .c-1 {width: 10%;}
+.container .c-2 {width: 20%;}
+.container .c-3 {width: 30%;}
+.container .c-4 {width: 40%;}
+.container .c-5 {width: 50%;}
+.container .c-6 {width: 60%;}
+
