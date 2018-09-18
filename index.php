@@ -1,62 +1,164 @@
-<style>
-ul {list-style: none}
-a {text-decoration: none}
-body, html {font-family: "Tahoma";background: #FDFDFD;color: #2A2A2A}
-.index {color: #b34f36;font-size: 20px;margin: 2vh 2.5vw}
-.index span {font-style: italic}
-
-.item {width: 100%;float: left}
-.item li {float: left;margin: 15px 1vw;border-radius: 3px;border: solid 1px rgba(58, 58, 58, 0.3);height: 30px;min-width: 10vw;line-height: 30px}
-.item li span {color: brown;margin: 0 5px}
-.item .time, .item .size {float: right;line-height: 30px;color: rgba(51, 51, 51, 0.8);padding: 0 10px}
-</style>
-
-
 <?php
-function formatBytes($bytes, $precision = 2) { 
-    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+/**
+ * Configuration :
+ *  Configurer la page comme vous voulez ici
+ * 
+*/
 
-    $bytes = max($bytes, 0); 
-    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
-    $pow = min($pow, count($units) - 1); 
+/**
+ * Theme = (dark - light - modern)
+ * remplasser ci-dessous par le thème voulu (si vous voulez un custom remplacer simplement le link plus bas par le votre)
+*/
+$theme = "dark";
 
-    return round($bytes, $precision) . ' ' . $units[$pow]; 
-} 
-?>
+/**
+ * Format de date
+ *  documentation du format ici -> http://php.net/manual/fr/function.date.php
+*/
+$format_date = "j-n-Y H:i:s";
 
-<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
-<a href="../"> <i class="fas fa-arrow-left fa-2x fa-pull-left fa-border"></i> </a>
-<h1 class="index"> Index de <span><?php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] ;?></span> </h1>
 
-<ul>
-    <?php
-    
-    foreach(new DirectoryIterator(dirname(__FILE__)) as $f ){
-        if ( !$f->isDot() && $f->getFilename() !== "index.php"){
 
-            ?>
-            <div class="item">
-                <div class="infos">
-                    <li> <span><i class="fas fa-folder"></i></span> <a href="<?php echo $f ;?>/"><?php echo $f ;?></a> </li>
- 
-                    <span class="time">
-                        <?php 
-                            echo date('d/m/Y H:i:s', $f->getMTime());
-                        ;?>
-                    </span>
-                    <span class="size">
-                        <?php 
-                            $size = $f->getSize();
-                            
-                            echo $f->getSize();
-                        ;?>
-                    </span>
-                </div>
-            </div>
-            <?php
-            
-        }
+
+
+
+ /**
+  * Code -! 
+  *     Merci de ne pas toucher si vous ne savez pas ce que vous faites !
+  *
+  */
+
+    $explode = explode('/', $_SERVER['REQUEST_URI']);
+    $page_name = $explode[sizeof($explode) - 2];
+
+    function convertToReadableSize($size){
+        $base = log($size) / log(1024);
+        $suffix = array("", "KB", "MB", "GB", "TB");
+        $f_base = floor($base);
+        return round(pow(1024, $base - floor($base)), 1) . $suffix[$f_base];
     }
 
-    ?>
-</ul>
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/Mikheull/WebDirectory/master/resources/icons/favicon.ico" type="image/ico" />
+    
+    <title><?= $page_name ;?> | Explorateur de fichiers</title>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/1f0b8a84/resources/themes/reset.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/1f0b8a84/resources/themes/<?= $theme ;?>.css">
+</head>
+
+
+
+<body>
+
+    <header>
+        <div class="centered">
+            <div class="title">
+                <h2>
+                    <?php 
+                    if(sizeof($explode) !== 3){
+                        foreach($explode as $exp){
+                            if($exp !== '' AND $exp !== $explode[sizeof($explode) - 2]){
+                                echo '<a href="../../'. $exp .'">'.$exp.'</a> / ';
+                            }
+                            if($exp == $explode[sizeof($explode) - 2]){
+                                echo $exp;
+                            }
+                        }
+                    }else{
+                    echo $page_name; 
+                    }
+                    ?>
+                </h2>
+            </div>
+            <div class="actions">
+                <ul>
+                    <li class="help" style="padding: 5px"> <i class="far fa-question-circle"></i> </li>
+                    <li class="new_folder btn"> <i class="fas fa-folder-plus"></i> <span>NEW</span> </li>
+                    <li class="new_file btn"> <i class="fas fa-file-medical"></i> <span>NEW</span> </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="centered">
+            <ul>
+                <li class="head">
+                    <div class="columns c-6">
+                        <p>Nom</p>
+                    </div>
+                    <div class="columns c-2">
+                        <p>Taille</p>
+                    </div>
+                    <div class="columns c-2">
+                        <p>Date de modification</p>
+                    </div>
+                </li>
+                
+                <?php 
+                    if(sizeof($explode) !== 3){
+                        ?>
+                        <li class="item">
+                            <a href="../">
+                                <div class="columns c-6 title">
+                                    <i class="fas fa-arrow-left"></i><span>...</span>
+                                </div>
+                                <div class="columns c-2">
+                                    <p>-</p>
+                                </div>
+                                <div class="columns c-2">
+                                    <p>-</p>
+                                </div>
+                            </a>    
+                        </li>
+                        <?php
+                    }
+                ?>
+                
+                <?php
+                foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
+                    if ( !$file->isDot() && $file -> getFilename() !== 'index.php'){
+                        $extension_icon = 'far fa-file';
+                        if($file -> getExtension() == 'php'){$extension_icon = 'fab fa-php';}
+                        if($file -> getExtension() == 'css'){$extension_icon = 'fab fa-css3-alt';}
+                        if($file -> getExtension() == 'js'){$extension_icon = 'fab fa-js';}
+                        if($file -> getExtension() == 'html'){$extension_icon = 'fab fa-html5';}
+                        if($file -> getExtension() == 'txt'){$extension_icon = 'fas fa-font';}
+                        if($file -> getExtension() == 'md'){$extension_icon = 'fab fa-markdown';}
+                        if($file -> isDir()){$extension_icon = 'far fa-folder';}
+                        if(@is_array(getimagesize($file))){ $extension_icon = 'far fa-image'; }
+                        if(is_resource($zip = zip_open($file))){ zip_close($zip); $extension_icon = 'far fa-file-archive'; }
+                    ?>
+                    <li class="item">
+                        <a href="<?= $file -> getFilename() ;?>">
+                            <div class="columns c-6 title">
+                                <i class="<?= $extension_icon ;?>"></i><span><?= $file -> getFilename() ;?></span>
+                            </div>
+                            <div class="columns c-2">
+                                <p><?= convertToReadableSize($file -> getSize()) ;?></p>
+                            </div>
+                            <div class="columns c-2">
+                                <p><?= date ($format_date, $file->getATime()) ;?></p>
+                            </div>
+                        </a>    
+                    </li>
+                    <?php
+                    }
+                }
+                ?>
+            </ul>
+
+        </div>
+    </section>
+
+</body>
+</html>
