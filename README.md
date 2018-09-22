@@ -5,17 +5,17 @@ Vous pourrez également faire des actions sur les fichiers ( dupliquer, supprime
 **WebDirectory** a été conçu pour plaire au maximum de gens, de ce fait il est configurable vous pouvez choisir un thème d'explorateur (dark, light, modern ..) ou mettre un des votres, changer le pack d'icon et la traduction de l'outil.
 <br>
 
-#### Requirements :
+### Requirements :
 * Php server
 
 
 <br><hr>
-#### Installation :
+### Installation :
 Pour l'installation rien de plus simple, télécharger le fichier [index.php](https://raw.githubusercontent.com/Mikheull/WebDirectory/master/index.php) et glisser le simplement dans les dossiers ou vous voulez avoir le **WebDirectory** .
 Voilà c'est tout, le script, par la suite, s'occupera de télécharger les fichiers dépendants tout seul.
 
 
-#### Configuration :
+### Configuration :
 Une grande partie de l'outil est ouvert a la configuration pour vous permettre d'avoir votre version de **WebDirectory** parfaite.
 *toutes les configurations se font en haut de la page index.php*
 
@@ -49,7 +49,7 @@ $format_date = "j-n-Y H:i:s";
 ```
 <br><hr>
 
-#### TO-DO :
+### TO-DO :
 - [x] affichage des fichiers/dossiers
 - [x] support des icons de fichiers
 - [x] fonction de retour en arriere
