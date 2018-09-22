@@ -2,7 +2,7 @@
 /**
  * Configuration :
  *  Configurer la page comme vous voulez ici
- * 
+ *
 */
 
 /**
@@ -19,7 +19,7 @@ $format_date = "j-n-Y H:i:s";
 
 
  /**
-  * Code -! 
+  * Code -!
   *     Merci de ne pas toucher si vous ne savez pas ce que vous faites !
   *
   */
@@ -36,6 +36,25 @@ $format_date = "j-n-Y H:i:s";
         return round(pow(1024, $base - floor($base)), 1) . $suffix[$f_base];
     }
 
+
+    if(isset($_POST['mode'])){
+        if($_POST['mode'] == 'folder'){
+            if(isset($_POST['name'])){
+                mkdir($_POST['name'], 0777); 
+                file_put_contents($_POST['name'].'/index.php', fopen("https://cdn.rawgit.com/Mikheull/WebDirectory/master/index.php", 'r'));
+            }
+        }
+        if($_POST['mode'] == 'file'){
+            if(isset($_POST['name'])){
+                $create = fopen($_POST['name'], 'w');
+                fputs($create, ' ');
+            }
+        }
+        
+    }
+    
+
+
 ?>
 
 <!DOCTYPE html>
@@ -43,14 +62,15 @@ $format_date = "j-n-Y H:i:s";
 <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/Mikheull/WebDirectory/master/resources/icons/favicon.ico" type="image/ico" />
-    
+
     <title><?= $page_name ;?> | Explorateur de fichiers</title>
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/1f0b8a84/resources/themes/reset.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/1f0b8a84/resources/themes/<?= $theme ;?>.css">
+    <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/1f0b8a84/resources/themes/<?= $theme ;?>.css"> -->
+    <link rel="stylesheet" href="resources/themes/dark.css">
 </head>
 
 
@@ -61,7 +81,7 @@ $format_date = "j-n-Y H:i:s";
         <div class="centered">
             <div class="title">
                 <h2>
-                    <?php 
+                    <?php
                     if(sizeof($explode) !== 3){
                         foreach($explode as $exp){
                             if($exp !== '' AND $exp !== $explode[sizeof($explode) - 2]){
@@ -72,7 +92,7 @@ $format_date = "j-n-Y H:i:s";
                             }
                         }
                     }else{
-                    echo $page_name; 
+                    echo $page_name;
                     }
                     ?>
                 </h2>
@@ -101,8 +121,8 @@ $format_date = "j-n-Y H:i:s";
                         <p>Date de modification</p>
                     </div>
                 </li>
-                
-                <?php 
+
+                <?php
                     if(isset($pages[2])){
                         ?>
                         <li class="item">
@@ -116,17 +136,19 @@ $format_date = "j-n-Y H:i:s";
                                 <div class="columns c-2">
                                     <p>-</p>
                                 </div>
-                            </a>    
+                            </a>
                         </li>
                         <?php
                     }
                 ?>
-                
+
+                <div id="new"> </div>
+
                 <?php
                 foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
                     if ( !$file->isDot() && $file -> getFilename() !== 'index.php' && $file -> getFilename() !== '.DS_Store'){
                         $extension_icon = 'far fa-file';
-                        
+
                         if($file -> getExtension() == 'php'){$extension_icon = 'fab fa-php';}
                         if($file -> getExtension() == 'css'){$extension_icon = 'fab fa-css3-alt';}
                         if($file -> getExtension() == 'js'){$extension_icon = 'fab fa-js';}
@@ -151,7 +173,7 @@ $format_date = "j-n-Y H:i:s";
                             <div class="columns c-2">
                                 <p><?= date ($format_date, $file->getATime()) ;?></p>
                             </div>
-                        </a>    
+                        </a>
                     </li>
                     <?php
                     }
@@ -162,5 +184,61 @@ $format_date = "j-n-Y H:i:s";
         </div>
     </section>
 
+
+
+
+
+
+<script>
+$( ".new_folder" ).click(function() {
+    if ( $( ".input_folder" ).length ) {
+    }else{
+        $( ".input_file" ).remove();
+        $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' name='fold_name' class='create_input' placeholder='Nom du dossier'> </div> </li>" );
+        $( "input" ).focus();
+    }
+});
+
+$( ".new_file" ).click(function() {
+    if ( $( ".input_file" ).length ) {
+    }else{
+        $( ".input_folder" ).remove();
+        $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' name='file_name' class='create_input' placeholder='Nom du fichier'> </div> </li>" );
+        $( "input" ).focus();
+    }
+});
+
+$(document).bind('keydown', function(e) {
+    // console.log(e.which)
+    
+    if(e.which == 27) {
+        if ( $( ".add_item" ).length ) {
+            e.preventDefault();
+            $( ".add_item" ).remove();
+        }
+        return false;
+    }
+
+    if (e.keyCode == 13) {
+        if ( $( ".add_item" ).length ) {
+            e.preventDefault();
+            if ( $( ".input_folder" ).length ) { var mode = 'folder' ;}
+            if ( $( ".input_file" ).length ) { var mode = 'file' ;}
+
+            var name = $('input').val();
+            $.ajax({
+                method: 'POST',
+                url: 'index.php',
+                data: {name: name, mode: mode},
+                success: function(data) {
+                    $('body').html(data);
+                } 
+            });
+        }
+        return false;
+    }
+});
+
+</script>
 </body>
 </html>
