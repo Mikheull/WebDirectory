@@ -33,3 +33,6 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 .container .c-5 {width: 50%;}
 .container .c-6 {width: 60%;}
 
+
+
+.create_input {margin: 10px;padding: 5px 10px;border-radius: 3px;border: solid 1px #353535;background: #FFF;width: 50%;color: #353535;font-size: 1.1em}
