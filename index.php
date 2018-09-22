@@ -68,10 +68,9 @@ $format_date = "j-n-Y H:i:s";
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/1f0b8a84/resources/themes/reset.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/1f0b8a84/resources/themes/<?= $theme ;?>.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/master/resources/themes/reset.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Mikheull/WebDirectory/master/resources/themes/<?= $theme ;?>.css">
 </head>
-
 
 
 <body>
