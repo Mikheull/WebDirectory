@@ -1,6 +1,6 @@
 # WebDirectory
 
-> **WebDirectory** est un explorateur de fichiers/dossiers pour le web. Avec cet outil vous pourrez naviguez facilement entre vos dossiers, et créer autant de fichiers/dossiers que vous voulez directement depuis votre page web.
+**WebDirectory** est un explorateur de fichiers/dossiers pour le web. Avec cet outil vous pourrez naviguez facilement entre vos dossiers, et créer autant de fichiers/dossiers que vous voulez directement depuis votre page web.
 Vous pourrez également faire des actions sur les fichiers ( dupliquer, supprimer, télécharger )
 **WebDirectory** a été conçu pour plaire au maximum de gens, de ce fait il est configurable vous pouvez choisir un thème d'explorateur (dark, light, modern ..) ou mettre un des votres, changer le pack d'icon et la traduction de l'outil.
 <br>
@@ -19,7 +19,7 @@ Voilà c'est tout, le script, par la suite, s'occupera de télécharger les fich
 Une grande partie de l'outil est ouvert a la configuration pour vous permettre d'avoir votre version de **WebDirectory** parfaite.
 *toutes les configurations se font en haut de la page index.php*
 
-1) Thème :
+1) Thème :<br>
 *Installez le thème qui vous plait, ou créer le votre*
 ```php
 $theme = "dark";
@@ -29,7 +29,7 @@ $theme = "dark";
 - [ ] modern
 <br>
 
-2) Format de la date :
+2) Format de la date :<br>
 *modifiez votre format*
 ```php
 $format_date = "j-n-Y H:i:s";
@@ -37,13 +37,13 @@ $format_date = "j-n-Y H:i:s";
 *documentation du format ici -> http://php.net/manual/fr/function.date.php*
 <br>
 
-3) Pack d'icon :
+3) Pack d'icon :<br>
 *personnalisez vos icons de fichiers*
 ```php
 ```
 <br>
 
-4) Traductions :
+4) Traductions :<br>
 *prenez votre langage favoris*
 ```php
 ```
