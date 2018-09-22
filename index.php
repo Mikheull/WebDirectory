@@ -18,16 +18,14 @@ $theme = "dark";
 $format_date = "j-n-Y H:i:s";
 
 
-
-
-
-
  /**
   * Code -! 
   *     Merci de ne pas toucher si vous ne savez pas ce que vous faites !
   *
   */
 
+
+    $pages = explode('/', $_SERVER['SCRIPT_NAME']);
     $explode = explode('/', $_SERVER['REQUEST_URI']);
     $page_name = $explode[sizeof($explode) - 2];
 
@@ -105,7 +103,7 @@ $format_date = "j-n-Y H:i:s";
                 </li>
                 
                 <?php 
-                    if(sizeof($explode) !== 3){
+                    if(isset($pages[2])){
                         ?>
                         <li class="item">
                             <a href="../">
@@ -126,17 +124,21 @@ $format_date = "j-n-Y H:i:s";
                 
                 <?php
                 foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
-                    if ( !$file->isDot() && $file -> getFilename() !== 'index.php'){
+                    if ( !$file->isDot() && $file -> getFilename() !== 'index.php' && $file -> getFilename() !== '.DS_Store'){
                         $extension_icon = 'far fa-file';
+                        
                         if($file -> getExtension() == 'php'){$extension_icon = 'fab fa-php';}
                         if($file -> getExtension() == 'css'){$extension_icon = 'fab fa-css3-alt';}
                         if($file -> getExtension() == 'js'){$extension_icon = 'fab fa-js';}
                         if($file -> getExtension() == 'html'){$extension_icon = 'fab fa-html5';}
                         if($file -> getExtension() == 'txt'){$extension_icon = 'fas fa-font';}
                         if($file -> getExtension() == 'md'){$extension_icon = 'fab fa-markdown';}
+                        if($file -> getExtension() == 'xml'){$extension_icon = 'fab fa-file-excel';}
+                        if($file -> getExtension() == 'pdf'){$extension_icon = 'fas fa-file-pdf';}
                         if($file -> isDir()){$extension_icon = 'far fa-folder';}
                         if(@is_array(getimagesize($file))){ $extension_icon = 'far fa-image'; }
                         if(is_resource($zip = zip_open($file))){ zip_close($zip); $extension_icon = 'far fa-file-archive'; }
+                        if(preg_match('/^.*\.(mp4|mov)$/i', $file)){ $extension_icon = 'far fa-file-video'; }
                     ?>
                     <li class="item">
                         <a href="<?= $file -> getFilename() ;?>">
