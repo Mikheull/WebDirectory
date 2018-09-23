@@ -44,14 +44,26 @@ define('date_format', 'j-n-Y H:i:s');
 <br>
 
 4) Traductions :<br>
-*prenez votre langage favoris*
+*prenez votre langage favori*
 ```php
 define('langage', 'FR');
 ```
 - [x] FR
 - [x] EN
-- [ ] ES
+- [x] ES
 - [ ] AL
+<br>
+
+5) Quelques réglagles :<br>
+*Activer / Désactiver des options*
+Outil de création de fichier (true - false)
+```php
+define('file_creator', true);
+```
+Outil de création de dossier (true - false)
+```php
+define('file_creator', true);
+```
 <br><hr>
 
 ### TO-DO :
@@ -69,5 +81,5 @@ define('langage', 'FR');
 - [ ] ajouter les packs d'icons
 - [ ] faire le thème modern
 - [ ] ajouter des nouveaux thèmes
-- [ ] faire le menu d'aide
-- [ ] ajouter les raccourcis clavier
+- [x] faire le menu d'aide
+- [x] ajouter les raccourcis clavier
