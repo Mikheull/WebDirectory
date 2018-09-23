@@ -37,7 +37,8 @@ define('', '');
  * 
  */
 define('cdn_link', 'https://cdn.rawgit.com/Mikheull/WebDirectory/master/');
-define('', '');
+define('file_creator', true);
+define('folder_creator', true);
 
 
 
@@ -163,8 +164,10 @@ if(isset($_POST['mode'])){
         <div class="actions">
             <ul>
                 <li class="help" style="padding: 5px"> <i class="far fa-question-circle"></i> </li>
-                <li class="new_folder btn"> <i class="far fa-folder"></i> <span data-translate='new_folder'></span> </li>
-                <li class="new_file btn"> <i class="far fa-file"></i> <span data-translate='new_file'></span> </li>
+                <?php
+                if(folder_creator == true){ ?> <li class="new_folder btn"> <i class="far fa-folder"></i> <span data-translate='new_folder'></span> </li> <?php }
+                if(file_creator == true){ ?> <li class="new_file btn"> <i class="far fa-file"></i> <span data-translate='new_file'></span> </li> <?php }
+                ?>
             </ul>
         </div>
         </div>
@@ -231,35 +234,156 @@ if(isset($_POST['mode'])){
     </section>
 
 
+    <footer>
+        <div class="centered">
+            <p><a href="https://github.com/Mikheull/WebDirectory">WebDirectory</a> a été développé par <a href="https://mikhaelbailly.fr/">Mikhaël Bailly</a></p>
+        </div>
+        
+    </footer>
+
+
+
+    <section class="modal">
+        <div class="mdl help_modal">
+            <div class="mdl_container">
+                <div class="head">
+                    <p class="title">Raccourcis Claviers</p> <div class="key"><span>CTRL</span> <span>/</span></div>
+                    <p class="subtitle">Gagnez de la rapidité avec ces quelques raccourcis claviers</p>
+                </div>
+                
+                <div class="body">
+                    <?php 
+                        if(folder_creator == true){ ?> 
+                            <div class="item">
+                                <div class="title">Créer un dossier</div>
+                                <div class="key"> <span>SHIFT</span> <span>D</span> </div>
+                            </div>
+                        <?php }
+                
+                        if(file_creator == true){ ?> 
+                            <div class="item">
+                                <div class="title">Créer un fichier</div>
+                                <div class="key"> <span>SHIFT</span> <span>F</span> </div>
+                            </div>
+                        <?php }
+                    ?>
+                
+                    <div class="item">
+                        <div class="title">Mettre a jour</div>
+                        <div class="key"> <span>SHIFT</span> <span>U</span> </div>
+                    </div>
+                    <div class="item">
+                        <div class="title">Aller au Github</div>
+                        <div class="key"> <span>SHIFT</span> <span>G</span> </div>
+                    </div>
+                    <div class="item">
+                        <div class="title">Annuler, quitter un popup</div>
+                        <div class="key"> <span>ESC</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdl file-action_modal">
+
+        </div>
+
+        <div class="mdl folder-action_modal">
+
+        </div>
+
+        <div class="mdl config_modal">
+
+        </div>
+    </section>
+
 
 <script>
     // Bouton de création de fichier / dossiers
-    $( ".new_folder" ).click(function() {
-        if ( $( ".input_folder" ).length === 0 ) {
-            $( ".input_file" ).remove();
-            $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' class='create_input' placeholder='folder_name '> </div> </li>" );
-            $( "input" ).focus();
-        }
+    <?php
+        if(folder_creator == true){ ?> 
+            $( ".new_folder" ).click(function() {
+                if ( $( ".input_folder" ).length === 0 ) {
+                    OpenCreateFolder();
+                }
+            });
+        <?php }
+    ?>
+
+    <?php
+        if(file_creator == true){ ?> 
+            $( ".new_file" ).click(function() {
+                if ( $( ".input_file" ).length === 0) {
+                    OpenCreateFile();
+                }
+            });
+        <?php }
+    ?>
+    
+
+    
+
+    // Bouton d'aide
+    $( ".help" ).click(function() {
+        OpenHelp();
     });
 
-    $( ".new_file" ).click(function() {
-        if ( $( ".input_file" ).length === 0) {
-            $( ".input_folder" ).remove();
-            $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' class='create_input' placeholder='file_name '> </div> </li>" );
-            $( "input" ).focus();
-        }
-    });
 
 
     // Actions avec le clavier
     $(document).bind('keydown', function(e) {
-        // console.log(e.which)
+        console.log(e.which)
+
+        // Raccourci clavier -> Menu d'aide
+        if(e.ctrlKey && (e.which == 58)) {
+            e.preventDefault();
+            OpenHelp();
+            return false;
+        }
+        <?php
+            if(folder_creator == true){ ?> 
+                // Raccourci clavier -> Créer un dossier
+                if(e.shiftKey && (e.which == 68)) {
+                    e.preventDefault();
+                    if ( $( ".input_folder" ).length === 0 ) {
+                        OpenCreateFolder();
+                    }   
+                    return false;
+                }
+            <?php }
+            if(file_creator == true){ ?> 
+                // Raccourci clavier -> Créer un fichier
+                if(e.shiftKey && (e.which == 70)) {
+                    e.preventDefault();
+                    if ( $( ".input_file" ).length === 0 ) {
+                        OpenCreateFile();
+                    }   
+                    return false;
+                }
+            <?php }
+        ?>
         
+        
+        // Raccourci clavier -> Aller au github
+        if(e.shiftKey && (e.which == 71)) {
+            e.preventDefault();
+            window.open('https://github.com/Mikheull/WebDirectory','_blank');
+            return false;
+        }
+
+
         // Bouton Echap pour quitter la création de fichiers / dossiers
         if(e.which == 27) {
             if ( $( ".add_item" ).length ) {
                 e.preventDefault();
                 $( ".add_item" ).remove();
+            }
+            if ( $( ".help_modal" ).length ) {
+                e.preventDefault();
+                $('header').removeClass('blur');
+                $('footer').removeClass('blur');
+                $('.container').removeClass('blur');
+                $( ".help_modal" ).hide();
             }
             return false;
         }
@@ -289,7 +413,7 @@ if(isset($_POST['mode'])){
     // Clic gauche pour ourvir un menu sur un fichier / dossier
     $('.item').contextmenu(function(e) {
         e.preventDefault();
-        alert("Right click");
+        alert("Clic droit");
     });
 
 
@@ -310,8 +434,46 @@ if(isset($_POST['mode'])){
         $("[data-translate='file_name']").html(items[7]);
     
     });
-</script>
 
+
+
+    // Fonctions globales
+    function OpenHelp(){
+        $('header').addClass('blur');
+        $('footer').addClass('blur');
+        $('.container').addClass('blur');
+        $('.help_modal').show();
+    }
+    
+    <?php
+        if(folder_creator == true){ ?> 
+            function OpenCreateFolder(){
+                $( ".input_file" ).remove();
+                $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' class='create_input' placeholder='folder_name '> </div> </li>" );
+                $( "input" ).focus();
+            }
+        <?php }
+        if(file_creator == true){ ?> 
+            function OpenCreateFile(){
+                $( ".input_folder" ).remove();
+                $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' class='create_input' placeholder='file_name '> </div> </li>" );
+                $( "input" ).focus();
+            }
+        <?php }
+    ?>
+    
+
+
+    function isMacintosh() {
+        return navigator.platform.indexOf('Mac') > -1
+    }
+
+    function isWindows() {
+        return navigator.platform.indexOf('Win') > -1
+    }
+    //alert(isWindows());
+
+</script>
 
 </body>
 </html>
