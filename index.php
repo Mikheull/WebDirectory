@@ -36,7 +36,9 @@ define('', '');
  * 
  * 
  */
-define('cdn_link', 'https://cdn.rawgit.com/Mikheull/WebDirectory/master/');
+// A mettre quand je lance en prod
+// define('cdn_link', 'https://cdn.rawgit.com/Mikheull/WebDirectory/master/');
+define('cdn_link', 'https://rawgit.com/Mikheull/WebDirectory/master/');
 define('file_creator', true);
 define('folder_creator', true);
 
