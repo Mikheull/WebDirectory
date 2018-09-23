@@ -1,0 +1,10 @@
+{
+    "title": "Explorador de ficheros",
+    "new_folder": "Nueva Carpeta",
+    "new_file": "Nueva Archivo",
+    "name": "Nombre",
+    "size": "Tamaño",
+    "date": "Fecha de modificación",
+    "folder_name": "Nombre de la carpeta",
+    "file_name": "Nombre del archivo"
+}
