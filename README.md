@@ -55,7 +55,7 @@ define('langage', 'FR');
 <br>
 
 5) Quelques réglagles :<br>
-*Activer / Désactiver des options*
+*Activer / Désactiver des options*<br>
 Outil de création de fichier (true - false)
 ```php
 define('file_creator', true);
@@ -72,14 +72,17 @@ define('file_creator', true);
 - [x] fonction de retour en arriere
 - [x] création de dossier
 - [x] création de fichier
+- [x] ajouter les traductions
+- [x] faire le menu d'aide
+- [x] ajouter les raccourcis clavier
 - [ ] securité sur la création de dossiers/fichiers
 - [ ] supprimer un élément
 - [ ] renommer un élément
 - [ ] dupliquer un élément
 - [ ] télécharger un élément
-- [x] ajouter les traductions
 - [ ] ajouter les packs d'icons
 - [ ] faire le thème modern
+- [ ] Intégrer GoogleDrive pour stocker les fichiers/dossiers
 - [ ] ajouter des nouveaux thèmes
-- [x] faire le menu d'aide
-- [x] ajouter les raccourcis clavier
+- [ ] editer les réglages de configuration directement dans le WebDirectory
+- [ ] ajouter des popups ( d'erreur, de succes, de confirmations )
