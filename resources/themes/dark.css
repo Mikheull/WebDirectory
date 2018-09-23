@@ -2,16 +2,16 @@ body {background: #252527}
 a:visited, a:link {color: #FFF}
 
 .centered {width: 70vw;margin: 0 15vw}
-.btn {background: #FFF;padding: 5px;border-radius: 6px;color: #2a2a2e;cursor: pointer;}
+.btn {background: #FFF;padding: 5px;border-radius: 6px;color: #2a2a2e;}
 .btn span {font-size: .7em;}
 .btn-light {background: #2a2a2e;border: solid #FFF 1px;color: #FFF}
 
 
 
 header {height: 50px;background: #202020;border-bottom: solid 2px #353535;float: left;}
-header .title {font-size: 20px;margin: 15px 0;float: left;color: #FFF}
+header .title {font-size: 20px;margin: 15px 0;float: left;color: #ffffff}
 header .actions {float: right;color: #FFF}
-header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
+header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;cursor: pointer;}
 
 
 
@@ -34,5 +34,28 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 .container .c-6 {width: 60%;}
 
 
-
 .create_input {margin: 10px;padding: 5px 10px;border-radius: 3px;border: solid 1px #FFF;background: #353535;width: 50%;color: #FFF;font-size: 1.1em}
+
+
+
+.mdl {display: none;}
+.blur {filter: blur(3px);}
+
+.help_modal {width: 100vw;height: 100vh;position: absolute;background: rgba(0, 0, 0, 0.685);}
+.help_modal .mdl_container {width: 60%;margin: 10vh 20%;background: #202020;border-radius: 6px;padding: 10px 0;color: #FFF}
+.help_modal .mdl_container .head {border-bottom: #000 solid 2px;width: 100%;padding: 5px 0 25px;}
+.help_modal .mdl_container .head .title {padding: 15px 0px 15px 10px;font-size: 2em;display: inline-block}
+.help_modal .mdl_container .head .subtitle {padding: 0 10px ;font-size: 1.2em}
+.key {display: inline-block;}
+.key span {color: #000000;padding: 2px 5px;border-radius: 2px;background: #FFF;margin: 0 1px}
+.help_modal .mdl_container .body {width: 90%;margin: 5vh 5%}
+.help_modal .mdl_container .body .item {width: 33%;margin: 0px 0 25px;display: inline-block;}
+.help_modal .mdl_container .body .item .title {margin-bottom: 15px;text-transform: uppercase;font-size: .8em}
+
+
+
+
+
+footer {text-align: center;margin: 50px 0 0;float: left;color: #353535}
+footer a:visited, a:link {color: #555555;}
+footer .centered {border-top: solid 1px #353535;padding: 25px 0}
