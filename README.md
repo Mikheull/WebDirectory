@@ -22,7 +22,7 @@ Une grande partie de l'outil est ouvert a la configuration pour vous permettre d
 1) Thème :<br>
 *Installez le thème qui vous plait, ou créer le votre*
 ```php
-$theme = "dark";
+define('theme', 'dark');
 ```
 - [x] dark
 - [x] light
@@ -32,7 +32,7 @@ $theme = "dark";
 2) Format de la date :<br>
 *modifiez votre format*
 ```php
-$format_date = "j-n-Y H:i:s";
+define('date_format', 'j-n-Y H:i:s');
 ```
 *documentation du format ici -> http://php.net/manual/fr/function.date.php*
 <br>
@@ -46,7 +46,12 @@ $format_date = "j-n-Y H:i:s";
 4) Traductions :<br>
 *prenez votre langage favoris*
 ```php
+define('langage', 'FR');
 ```
+- [x] FR
+- [x] EN
+- [ ] ES
+- [ ] AL
 <br><hr>
 
 ### TO-DO :
@@ -60,7 +65,7 @@ $format_date = "j-n-Y H:i:s";
 - [ ] renommer un élément
 - [ ] dupliquer un élément
 - [ ] télécharger un élément
-- [ ] ajouter les traductions
+- [x] ajouter les traductions
 - [ ] ajouter les packs d'icons
 - [ ] faire le thème modern
 - [ ] ajouter des nouveaux thèmes
