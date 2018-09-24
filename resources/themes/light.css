@@ -5,7 +5,7 @@ a:visited, a:link {color: #000}
 .btn {background: #343a40;padding: 5px;border-radius: 6px;color: #FFF}
 .btn span {font-size: .7em;}
 .btn-light {background: #FFF;border: solid #343a40 1px;color: #343a40}
-
+input {color: #FFF}
 
 
 header {height: 50px;background: #f8f9fa;border-bottom: solid 2px #343a40;float: left;}
@@ -38,19 +38,28 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 
 
 
-.mdl {display: none;}
+
 .blur {filter: blur(3px);}
 
-.help_modal {width: 100vw;height: 100vh;position: absolute;background: rgba(241, 241, 241, 0.685);}
-.help_modal .mdl_container {width: 60%;margin: 10vh 20%;background: #FFF;border-radius: 6px;padding: 10px 0;color: #353535}
-.help_modal .mdl_container .head {border-bottom: #353535 solid 2px;width: 100%;padding: 5px 0 25px;}
-.help_modal .mdl_container .head .title {padding: 15px 0px 15px 10px;font-size: 2em;display: inline-block}
-.help_modal .mdl_container .head .subtitle {padding: 0 10px ;font-size: 1.2em}
+
+.mdl {width: 100vw;height: 100vh;position: absolute;background: rgba(241, 241, 241, 0.685);display: none;}
+.mdl .mdl_container {width: 60%;margin: 10vh 20%;background: #FFF;border-radius: 6px;padding: 10px 0;color: #353535;height: 70vh;overflow: scroll;}
+.mdl .mdl_container .head {border-bottom: #353535 solid 2px;width: 100%;padding: 5px 0 25px;}
+.mdl .mdl_container .head .title {padding: 15px 0px 15px 10px;font-size: 2em;display: inline-block}
+.mdl .mdl_container .head .subtitle {padding: 0 10px ;font-size: 1.2em}
 .key {display: inline-block;}
 .key span {color: #FFF;padding: 2px 5px;border-radius: 2px;background: #353535;margin: 0 1px}
-.help_modal .mdl_container .body {width: 90%;margin: 5vh 5%}
-.help_modal .mdl_container .body .item {width: 33%;margin: 0px 0 25px;display: inline-block;}
-.help_modal .mdl_container .body .item .title {margin-bottom: 15px;text-transform: uppercase;font-size: .8em}
+.mdl .mdl_container .body {width: 90%;margin: 5vh 5%}
+.mdl .mdl_container .body .item {width: 33%;margin: 0px 0 25px;display: inline-block;}
+.mdl .mdl_container .body .item .title {margin-bottom: 15px;text-transform: uppercase;font-size: .8em}
+
+.mdl .input-group {margin: 25px 0;padding: 5px 10px;border-radius: 2px;background: #FFF;width: 95%;color: #353535;}
+.mdl .input-group label {display: block;text-transform: uppercase;font-size: 1em;margin: 10px 10px 0}
+.mdl .input-group small {display: block;font-style: italic;font-size: .8em;margin: 5px 10px 10px;color: rgba(34, 34, 34, 0.6)}
+.mdl .input-group small a {color: #353535}
+.mdl .input-group span {padding: 5px 0 5px 10px;}
+.mdl .input-group input {height: 2em;border: none;border-radius: 3px;padding: 0 5px ;background: #353535;}
+.mdl .save_config {background: #343a40;padding: 5px;border-radius: 6px;color: #FFF;text-align: center;margin: 0 45%;cursor: pointer;}
 
 
 
@@ -59,3 +68,9 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 footer {text-align: center;margin: 50px 0 0;float: left;color: #353535}
 footer a:visited, a:link {color: #555555;}
 footer .centered {border-top: solid 1px #353535;padding: 25px 0}
+
+
+
+
+
+
