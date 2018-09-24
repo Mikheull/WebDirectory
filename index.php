@@ -54,30 +54,6 @@ define('folder_creator', true);
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-/**
- * Fonction pour récupérer un message (traduction)
- * 
- *  getMessage($param)
- *  @param = nom de la node json a récupérer
- *  @return = le message ou un message français si null
- * 
- */
-
-// function getMessage($n){
-//     $get = file_get_contents(cdn_link .'resources/translate/'. langage .'.json');
-//     if($get == ''){
-//         $get = file_get_contents(cdn_link .'resources/translate/FR.json');
-//     }
-//     $response = json_decode($get);
-//     if(isset($response -> $n)){
-//         return $response -> $n;
-//     }else{
-//         $get = file_get_contents(cdn_link .'resources/translate/FR.json');
-//         $response = json_decode($get);
-//         return $response -> $n;
-//     }  
-// }
-
 
 
 /**
@@ -157,11 +133,11 @@ if(isset($_POST['mode'])){
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/reset.css">
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css">
 
-    <title data-translate='title'></title>
+    <title>WebDirectory</title>
 </head>
 
 
-<body>
+<body id="translate">
 
     <header>
         <div class="centered">
@@ -187,8 +163,8 @@ if(isset($_POST['mode'])){
             <ul>
                 <li class="help" style="padding: 5px"> <i class="far fa-question-circle"></i> </li>
                 <?php
-                if(folder_creator == true){ ?> <li class="new_folder btn"> <i class="far fa-folder"></i> <span data-translate='new_folder'></span> </li> <?php }
-                if(file_creator == true){ ?> <li class="new_file btn"> <i class="far fa-file"></i> <span data-translate='new_file'></span> </li> <?php }
+                if(folder_creator == true){ ?> <li class="new_folder btn"> <i class="far fa-folder"></i> <span>{{%new_folder%}}</span> </li> <?php }
+                if(file_creator == true){ ?> <li class="new_file btn"> <i class="far fa-file"></i> <span>{{%new_file%}}</span> </li> <?php }
                 ?>
             </ul>
         </div>
@@ -200,9 +176,9 @@ if(isset($_POST['mode'])){
         <div class="centered">
             <ul>
                 <li class="head">
-                    <div class="columns c-6"> <p data-translate='name'></p> </div>
-                    <div class="columns c-2"> <p data-translate='size'></p> </div>
-                    <div class="columns c-2"> <p data-translate='date'></p> </div>
+                    <div class="columns c-6"> <p>{{%name%}}</p> </div>
+                    <div class="columns c-2"> <p>{{%size%}}</p> </div>
+                    <div class="columns c-2"> <p>{{%date%}}</p> </div>
                 </li>
 
                 <?php
@@ -326,6 +302,12 @@ if(isset($_POST['mode'])){
                             <?php
                                 if( theme !== 'dark'){ ?> <option value="dark">dark</option> <?php }
                                 if( theme !== 'light'){ ?> <option value="light">light</option> <?php }
+                                if( theme !== 'blue'){ ?> <option value="blue">blue</option> <?php }
+                                if( theme !== 'green'){ ?> <option value="green">green</option> <?php }
+                                if( theme !== 'orange'){ ?> <option value="orange">orange</option> <?php }
+                                if( theme !== 'purple'){ ?> <option value="purple">purple</option> <?php }
+                                if( theme !== 'red'){ ?> <option value="red">red</option> <?php }
+                                if( theme !== 'yellow'){ ?> <option value="yellow">yellow</option> <?php }
                                 if( theme !== 'custom'){ ?> <option value="custom">custom</option> <?php }
                             ?>
                         </select>
@@ -348,6 +330,7 @@ if(isset($_POST['mode'])){
                                 if( langage !== 'FR'){ ?> <option value="FR">FR</option> <?php }
                                 if( langage !== 'EN'){ ?> <option value="EN">EN</option> <?php }
                                 if( langage !== 'ES'){ ?> <option value="ES">ES</option> <?php }
+                                if( langage !== 'AL'){ ?> <option value="AL">AL</option> <?php }
                                 if( langage !== 'custom'){ ?> <option value="custom">custom</option> <?php }
                             ?>
                         </select>
@@ -389,9 +372,6 @@ if(isset($_POST['mode'])){
             });
         <?php }
     ?>
-    
-
-    
 
     // Bouton d'aide
     $( ".help" ).click(function() {
@@ -413,6 +393,10 @@ if(isset($_POST['mode'])){
             } 
         });
     });
+
+
+
+
 
 
     // Actions avec le clavier
@@ -472,6 +456,7 @@ if(isset($_POST['mode'])){
         ?>
         
         
+        
         // Raccourci clavier -> Aller au github
         if(e.shiftKey && (e.which == 71)) {
             e.preventDefault();
@@ -521,6 +506,9 @@ if(isset($_POST['mode'])){
     });
 
 
+
+
+
     // Clic gauche pour ourvir un menu sur un fichier / dossier
     $('.item').contextmenu(function(e) {
         e.preventDefault();
@@ -529,24 +517,28 @@ if(isset($_POST['mode'])){
     });
 
 
+
+
     // Récupérer les traductions des messages
-    $.getJSON( "<?= cdn_link ?>resources/translate/<?= langage ?>.json", function( data ) {
-        var items = [];
-        $.each( data, function( key, val ) {
-            items.push( val );
-        });
-
-        $("[data-translate='title']").html(items[0]);
-        $("[data-translate='new_folder']").html(items[1]);
-        $("[data-translate='new_file']").html(items[2]);
-        $("[data-translate='name']").html(items[3]);
-        $("[data-translate='size']").html(items[4]);
-        $("[data-translate='date']").html(items[5]);
-        $("[data-translate='folder_name']").html(items[6]);
-        $("[data-translate='file_name']").html(items[7]);
+    // $.getJSON( "<?= cdn_link ?>resources/translate/<?= langage ?>.json", function( data ) {
+    //     var items = [];
+    //     var n = 0;
+    //     $.each( data, function( key, val ) {
+    //         items.push( val );
+    //         translate('{{%'+ key +'%}}', items[n])
+    //         n++;
+    //     });
     
-    });
+    // });
+    
+    // function translate(string, res){
+    //     var str = document.getElementById("translate").innerHTML; 
+    //     var res = str.replace(string, res);
+    //     document.getElementById("translate").innerHTML = res;
+         
+    // }
 
+    
 
 
     // Fonctions globales
@@ -564,14 +556,14 @@ if(isset($_POST['mode'])){
         if(folder_creator == true){ ?> 
             function OpenCreateFolder(){
                 $( ".input_file" ).remove();
-                $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' class='create_input' placeholder='folder_name '> </div> </li>" );
+                $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' class='create_input' placeholder='{{%folder_name%}}'> </div> </li>" );
                 $( "input" ).focus();
             }
         <?php }
         if(file_creator == true){ ?> 
             function OpenCreateFile(){
                 $( ".input_folder" ).remove();
-                $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' class='create_input' placeholder='file_name '> </div> </li>" );
+                $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' class='create_input' placeholder='{{%file_name%}}'> </div> </li>" );
                 $( "input" ).focus();
             }
         <?php }
