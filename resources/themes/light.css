@@ -1,20 +1,21 @@
+/* Global */
 body {background: #FFF}
 a:visited, a:link {color: #000}
-
 .centered {width: 70vw;margin: 0 15vw}
-.btn {background: #343a40;padding: 5px;border-radius: 6px;color: #FFF}
+.btn {background: #343a40;padding: 5px;border-radius: 6px;color: #FFF;cursor: pointer;}
 .btn span {font-size: .7em;}
-.btn-light {background: #FFF;border: solid #343a40 1px;color: #343a40}
 input {color: #FFF}
+.blur {filter: blur(3px);}
 
 
+/* Header */
 header {height: 50px;background: #f8f9fa;border-bottom: solid 2px #343a40;float: left;}
 header .title {font-size: 20px;margin: 15px 0;float: left;}
 header .actions {float: right;color: #343a40}
 header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 
 
-
+/* Main Container */
 .container {margin: 2vh 0;float: left;color: #343a40}
 .container .head {padding: 15px 0;float: left;width: 100%;text-transform: uppercase;font-size: .7em;font-weight: bold}
 .container .head .columns {float: left;}
@@ -33,15 +34,10 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 .container .c-5 {width: 50%;}
 .container .c-6 {width: 60%;}
 
-
 .create_input {margin: 10px;padding: 5px 10px;border-radius: 3px;border: solid 1px #353535;background: #FFF;width: 50%;color: #353535;font-size: 1.1em}
 
 
-
-
-.blur {filter: blur(3px);}
-
-
+/* Modal */
 .mdl {width: 100vw;height: 100vh;position: absolute;background: rgba(241, 241, 241, 0.685);display: none;}
 .mdl .mdl_container {width: 60%;margin: 10vh 20%;background: #FFF;border-radius: 6px;padding: 10px 0;color: #353535;height: 70vh;overflow: scroll;}
 .mdl .mdl_container .head {border-bottom: #353535 solid 2px;width: 100%;padding: 5px 0 25px;}
@@ -62,15 +58,7 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 .mdl .save_config {background: #343a40;padding: 5px;border-radius: 6px;color: #FFF;text-align: center;margin: 0 45%;cursor: pointer;}
 
 
-
-
-
+/* Footer */
 footer {text-align: center;margin: 50px 0 0;float: left;color: #353535}
 footer a:visited, a:link {color: #555555;}
 footer .centered {border-top: solid 1px #353535;padding: 25px 0}
-
-
-
-
-
-

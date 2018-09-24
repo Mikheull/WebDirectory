@@ -1,20 +1,21 @@
+/* Global */
 body {background: #252527}
 a:visited, a:link {color: #FFF}
-
 .centered {width: 70vw;margin: 0 15vw}
-.btn {background: #FFF;padding: 5px;border-radius: 6px;color: #2a2a2e;}
+.btn {background: #FFF;padding: 5px;border-radius: 6px;color: #2a2a2e;cursor: pointer;}
 .btn span {font-size: .7em;}
-.btn-light {background: #2a2a2e;border: solid #FFF 1px;color: #FFF}
 input {color: #2a2a2e}
+.blur {filter: blur(3px);}
 
 
+/* Header */
 header {height: 50px;background: #202020;border-bottom: solid 2px #353535;float: left;}
 header .title {font-size: 20px;margin: 15px 0;float: left;color: #ffffff}
 header .actions {float: right;color: #FFF}
 header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;cursor: pointer;}
 
 
-
+/* Main Container */
 .container {margin: 2vh 0;float: left;color: #FFF}
 .container .head {padding: 15px 0;float: left;width: 100%;text-transform: uppercase;font-size: .7em;font-weight: bold}
 .container .head .columns {float: left;}
@@ -33,14 +34,10 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;cursor: p
 .container .c-5 {width: 50%;}
 .container .c-6 {width: 60%;}
 
-
 .create_input {margin: 10px;padding: 5px 10px;border-radius: 3px;border: solid 1px #FFF;background: #353535;width: 50%;color: #FFF;font-size: 1.1em}
 
 
-
-
-.blur {filter: blur(3px);}
-
+/* Modal */
 .mdl {width: 100vw;height: 100vh;position: absolute;background: rgba(0, 0, 0, 0.685);display: none;}
 .mdl .mdl_container {width: 60%;margin: 10vh 20%;background: #202020;border-radius: 6px;padding: 10px 0;color: #FFF;height: 70vh;overflow: scroll;}
 .mdl .mdl_container .head {border-bottom: #000 solid 2px;width: 100%;padding: 5px 0 25px;}
@@ -61,6 +58,7 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;cursor: p
 .mdl .save_config {background: #FFF;padding: 5px;border-radius: 6px;color: #2a2a2e;text-align: center;margin: 0 45%;cursor: pointer;}
 
 
+/* Footer */
 footer {text-align: center;margin: 50px 0 0;float: left;color: #353535}
 footer a:visited, a:link {color: #555555;}
 footer .centered {border-top: solid 1px #353535;padding: 25px 0}

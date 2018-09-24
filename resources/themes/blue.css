@@ -1,0 +1,64 @@
+/* Global */
+body {background: #FFF}
+a:visited, a:link {color: #1864ab}
+.centered {width: 70vw;margin: 0 15vw}
+.btn {background: #e7f5ff;padding: 5px;border: solid 2px #339af0;border-radius: 6px;color: #1971c2;cursor: pointer;}
+.btn span {font-size: .7em;}
+input {color: #FFF}
+.blur {filter: blur(3px);}
+
+
+/* Header */
+header {height: 50px;background: #f8f9fa;border-bottom: solid 2px #1971c2;float: left;}
+header .title {font-size: 20px;margin: 15px 0;float: left;color: #1864ab}
+header .actions {float: right;color: #1971c2}
+header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
+
+
+/* Main Container */
+.container {margin: 2vh 0;float: left;color: #339af0}
+.container .head {padding: 15px 0;float: left;width: 100%;text-transform: uppercase;font-size: .7em;font-weight: bold}
+.container .head .columns {float: left;}
+
+.container .item a {padding: 10px 0;float: left;width: 100%;}
+.container .item .columns {float: left;}
+.container .item .title i{padding: 0 5px}
+.container .item .title span{padding: 0 15px;color: rgba(52, 58, 64, 0.7)}
+.container .item:hover a {background: #e7f5ff;border-radius: 3px;color: #1971c2;}
+.container .item:hover .title span {color: #1971c2;}
+
+.container .c-1 {width: 10%;}
+.container .c-2 {width: 20%;}
+.container .c-3 {width: 30%;}
+.container .c-4 {width: 40%;}
+.container .c-5 {width: 50%;}
+.container .c-6 {width: 60%;}
+
+.create_input {margin: 10px;padding: 5px 10px;border-radius: 3px;border: solid 1px #1971c2;background: #e7f5ff;width: 50%;color: #1864ab;font-size: 1.1em}
+
+
+/* Modal */
+.mdl {width: 100vw;height: 100vh;position: absolute;background: rgba(241, 241, 241, 0.685);display: none;}
+.mdl .mdl_container {width: 60%;margin: 10vh 20%;background: #FFF;border-radius: 6px;padding: 10px 0;color: #1971c2;height: 70vh;overflow: scroll;}
+.mdl .mdl_container .head {border-bottom: #1971c2 solid 2px;width: 100%;padding: 5px 0 25px;}
+.mdl .mdl_container .head .title {padding: 15px 0px 15px 10px;font-size: 2em;display: inline-block}
+.mdl .mdl_container .head .subtitle {padding: 0 10px ;font-size: 1.2em}
+.key {display: inline-block;}
+.key span {color: #1971c2;padding: 2px 5px;border-radius: 2px;background: #e7f5ff;margin: 0 1px}
+.mdl .mdl_container .body {width: 90%;margin: 5vh 5%}
+.mdl .mdl_container .body .item {width: 33%;margin: 0px 0 25px;display: inline-block;}
+.mdl .mdl_container .body .item .title {margin-bottom: 15px;text-transform: uppercase;font-size: .8em}
+
+.mdl .input-group {margin: 25px 0;padding: 5px 10px;border-radius: 2px;background: #FFF;width: 95%;color: #1864ab;}
+.mdl .input-group label {display: block;text-transform: uppercase;font-size: 1em;margin: 10px 10px 0}
+.mdl .input-group small {display: block;font-style: italic;font-size: .8em;margin: 5px 10px 10px;color: rgba(34, 34, 34, 0.6)}
+.mdl .input-group small a {color: #1864ab}
+.mdl .input-group span {padding: 5px 0 5px 10px;}
+.mdl .input-group input {height: 2em;border: none;border-radius: 3px;padding: 0 5px ;background: #e7f5ff;color: #1864ab}
+.mdl .save_config {background: #1971c2;padding: 5px;border-radius: 6px;color: #FFF;text-align: center;margin: 0 45%;cursor: pointer;}
+
+
+/* Footer */
+footer {text-align: center;margin: 50px 0 0;float: left;color: #1971c2}
+footer a:visited, a:link {color: #1864ab;}
+footer .centered {border-top: solid 1px #1971c2;padding: 25px 0}
