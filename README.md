@@ -3,6 +3,7 @@
 **WebDirectory** est un explorateur de fichiers/dossiers pour le web. Avec cet outil vous pourrez naviguez facilement entre vos dossiers, et créer autant de fichiers/dossiers que vous voulez directement depuis votre page web.
 Vous pourrez également faire des actions sur les fichiers ( dupliquer, supprimer, télécharger )
 **WebDirectory** a été conçu pour plaire au maximum de gens, de ce fait il est configurable vous pouvez choisir un thème d'explorateur (dark, light, modern ..) ou mettre un des votres, changer le pack d'icon et la traduction de l'outil.
+Vous pouvez désormais configurer votre outil directement depuis la page
 <br>
 
 ### Requirements :
@@ -82,5 +83,5 @@ define('file_creator', true);
 - [ ] ajouter les packs d'icons
 - [ ] Intégrer GoogleDrive pour stocker les fichiers/dossiers
 - [ ] ajouter des nouveaux thèmes
-- [ ] editer les réglages de configuration directement dans le WebDirectory
+- [x] editer les réglages de configuration directement dans le WebDirectory
 - [ ] ajouter des popups ( d'erreur, de succes, de confirmations )
