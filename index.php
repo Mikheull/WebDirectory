@@ -1,7 +1,7 @@
 <?php
 /**
  * modification du thème de la page
- * vous pouvez utiliser un des thèmes disponibles en changeant par ( dark - light - modern )
+ * vous pouvez utiliser un des thèmes disponibles en changeant par ( dark - light )
  * ou bien en choisir un custom en changeant par ( custom ) et en indiquant le lien du fichier css ci-dessous
  * 
  */
@@ -14,7 +14,7 @@ define('theme_custom_link', 'https://votre-lien.fr');
  * documentation du format ici -> http://php.net/manual/fr/function.date.php
  * 
  */
-define('date_format', 'j-n-Y H:i:s');
+define('date_format', 'j-n-Y H:i');
 
 /**
  * modification des messages
@@ -121,7 +121,23 @@ if(isset($_POST['mode'])){
         }
     }
 }
-    
+
+
+
+    if(isset($_POST['theme'])){
+        $file = file_get_contents('index.php');
+        $new_theme = $_POST['theme'];
+        $new_date_format = $_POST['date_format'];
+        $new_langage = $_POST['langage'];
+        $replace = str_replace("define('theme', '". theme ."');", "define('theme', '". $new_theme ."');", $file);
+        $replace = str_replace("define('date_format', '". date_format ."');", "define('date_format', '". $new_date_format ."');", $replace);
+        $replace = str_replace("define('langage', '". langage ."');", "define('langage', '". $new_langage ."');", $replace);
+
+        $fin = file_put_contents('index.php', $replace);
+        ?> <script> window.location.reload(true); </script> <?php
+    }
+
+
 
 ?>
 
@@ -135,7 +151,8 @@ if(isset($_POST['mode'])){
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/reset.css">
-    <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css">
+    <!-- <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> -->
+    <link rel="stylesheet" href="resources/themes/<?= theme ;?>.css">
 
     <title data-translate='title'></title>
 </head>
@@ -275,6 +292,10 @@ if(isset($_POST['mode'])){
                         <div class="key"> <span>SHIFT</span> <span>U</span> </div>
                     </div>
                     <div class="item">
+                        <div class="title">Ouvrir la config</div>
+                        <div class="key"> <span>SHIFT</span> <span>C</span> </div>
+                    </div>
+                    <div class="item">
                         <div class="title">Aller au Github</div>
                         <div class="key"> <span>SHIFT</span> <span>G</span> </div>
                     </div>
@@ -286,15 +307,60 @@ if(isset($_POST['mode'])){
             </div>
         </div>
 
+        <div class="mdl config_modal">
+            <div class="mdl_container">
+                <div class="head">
+                    <p class="title">Configuration</p> <div class="key"><span>SHIFT</span> <span>C</span></div>
+                    <p class="subtitle">Faite votre configuration simplement</p>
+                </div>
+                
+                <div class="body">
+                    <div class="input-group">
+                        <label for="theme">Thème</label>
+                        <small>Changer de thème facilement </small>
+                        <span><i class="fas fa-palette"></i></span>
+                        <select name="theme" id="theme">
+                            <option value="<?= theme ?>"><?= theme ?></option>
+                            <?php
+                                if( theme !== 'dark'){ ?> <option value="dark">dark</option> <?php }
+                                if( theme !== 'light'){ ?> <option value="light">light</option> <?php }
+                                if( theme !== 'custom'){ ?> <option value="custom">custom</option> <?php }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="date_format">Format de la date</label>
+                        <small>Configurer votre propre format de date. <a href="http://php.net/manual/fr/function.date.php" target="blank">Documentation</a> </small>
+                        <span><i class="fas fa-calendar-alt"></i></span>
+                        <input type="text" value="<?= date_format ?>" id="date_format" placeholder="Date format">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="langage">Langage</label>
+                        <small>Changer de langage comme bon vous semble </small>
+                        <span><i class="fas fa-language"></i></span>
+                        <select name="langage" id="langage">
+                            <option value="<?= langage ?>"><?= langage ?></option>
+                            <?php
+                                if( langage !== 'FR'){ ?> <option value="FR">FR</option> <?php }
+                                if( langage !== 'EN'){ ?> <option value="EN">EN</option> <?php }
+                                if( langage !== 'ES'){ ?> <option value="ES">ES</option> <?php }
+                                if( langage !== 'custom'){ ?> <option value="custom">custom</option> <?php }
+                            ?>
+                        </select>
+                    </div>
+
+                    <span class="save_config">Sauvegarder</span>
+                </div>
+            </div>
+        </div>
+
         <div class="mdl file-action_modal">
 
         </div>
 
         <div class="mdl folder-action_modal">
-
-        </div>
-
-        <div class="mdl config_modal">
 
         </div>
     </section>
@@ -330,11 +396,26 @@ if(isset($_POST['mode'])){
         OpenHelp();
     });
 
+    $( ".save_config" ).click(function() {
+        var theme = $('#theme').val();
+        var date_format = $('#date_format').val();
+        var langage = $('#langage').val();
+        // var file_creator = $('#file_creator').val();
+        // var folder_creator = $('#folder_creator').val();
+        $.ajax({
+            method: 'POST',
+            url: 'index.php',
+            data: {theme: theme, date_format: date_format, langage: langage},
+            success: function(data) {
+                $('body').html(data);
+            } 
+        });
+    });
 
 
     // Actions avec le clavier
     $(document).bind('keydown', function(e) {
-        console.log(e.which)
+        //console.log(e.which)
 
         // Raccourci clavier -> Menu d'aide
         if(e.ctrlKey && (e.which == 58)) {
@@ -342,6 +423,13 @@ if(isset($_POST['mode'])){
             OpenHelp();
             return false;
         }
+        // Raccourci clavier -> Menu de config
+        if(e.shiftKey && (e.which == 67)) {
+            e.preventDefault();
+            OpenConfig();
+            return false;
+        }
+        
         <?php
             if(folder_creator == true){ ?> 
                 // Raccourci clavier -> Créer un dossier
@@ -386,6 +474,13 @@ if(isset($_POST['mode'])){
                 $('footer').removeClass('blur');
                 $('.container').removeClass('blur');
                 $( ".help_modal" ).hide();
+            }
+            if ( $( ".config_modal" ).length ) {
+                e.preventDefault();
+                $('header').removeClass('blur');
+                $('footer').removeClass('blur');
+                $('.container').removeClass('blur');
+                $( ".config_modal" ).hide();
             }
             return false;
         }
@@ -445,6 +540,13 @@ if(isset($_POST['mode'])){
         $('footer').addClass('blur');
         $('.container').addClass('blur');
         $('.help_modal').show();
+    }
+
+    function OpenConfig(){
+        $('header').addClass('blur');
+        $('footer').addClass('blur');
+        $('.container').addClass('blur');
+        $('.config_modal').show();
     }
     
     <?php
