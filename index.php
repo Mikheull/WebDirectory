@@ -138,9 +138,13 @@ if(isset($_POST['mode'])){
     }
 
 
+    if(isset($_POST['update'])){
+        file_put_contents('index.php', fopen(cdn_link ."/index.php", 'r'));
+        ?> <script> window.location.reload(true); </script> <?php
+    }
+
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -151,8 +155,7 @@ if(isset($_POST['mode'])){
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/reset.css">
-    <!-- <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> -->
-    <link rel="stylesheet" href="resources/themes/<?= theme ;?>.css">
+    <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css">
 
     <title data-translate='title'></title>
 </head>
@@ -220,7 +223,7 @@ if(isset($_POST['mode'])){
 
                 <?php
                 foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
-                    if ( !$file->isDot() && $file -> getFilename() !== 'index.php' && $file -> getFilename() !== '.DS_Store'){
+                    if ( !$file->isDot() && $file -> getFilename() !== '.DS_Store'){
                         $extension_icon = 'far fa-file';
 
                         if($file -> getExtension() == 'php'){$extension_icon = 'fab fa-php';}
@@ -251,7 +254,6 @@ if(isset($_POST['mode'])){
 
         </div>
     </section>
-
 
     <footer>
         <div class="centered">
@@ -429,6 +431,22 @@ if(isset($_POST['mode'])){
             OpenConfig();
             return false;
         }
+        // Raccourci clavier -> Menu d'aide
+        if(e.shiftKey && (e.which == 85)) {
+            e.preventDefault();
+            if (confirm("Faire la mise a jour!")) {
+                console.log("You pressed OK!");
+                $.ajax({
+                    method: 'POST',
+                    url: 'index.php',
+                    data: {update: 'true'},
+                    success: function(data) {
+                        $('body').html(data);
+                    } 
+                });
+            }
+            return false;
+        }
         
         <?php
             if(folder_creator == true){ ?> 
@@ -470,16 +488,12 @@ if(isset($_POST['mode'])){
             }
             if ( $( ".help_modal" ).length ) {
                 e.preventDefault();
-                $('header').removeClass('blur');
-                $('footer').removeClass('blur');
-                $('.container').removeClass('blur');
+                $('header, footer, .container').removeClass('blur');
                 $( ".help_modal" ).hide();
             }
             if ( $( ".config_modal" ).length ) {
                 e.preventDefault();
-                $('header').removeClass('blur');
-                $('footer').removeClass('blur');
-                $('.container').removeClass('blur');
+                $('header, footer, .container').removeClass('blur');
                 $( ".config_modal" ).hide();
             }
             return false;
@@ -511,6 +525,7 @@ if(isset($_POST['mode'])){
     $('.item').contextmenu(function(e) {
         e.preventDefault();
         alert("Clic droit");
+        $( this + "span" ).hide();
     });
 
 
@@ -536,16 +551,12 @@ if(isset($_POST['mode'])){
 
     // Fonctions globales
     function OpenHelp(){
-        $('header').addClass('blur');
-        $('footer').addClass('blur');
-        $('.container').addClass('blur');
+        $('header, footer, .container').addClass('blur');
         $('.help_modal').show();
     }
 
     function OpenConfig(){
-        $('header').addClass('blur');
-        $('footer').addClass('blur');
-        $('.container').addClass('blur');
+        $('header, footer, .container').addClass('blur');
         $('.config_modal').show();
     }
     
