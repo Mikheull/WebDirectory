@@ -26,7 +26,6 @@ define('theme', 'dark');
 ```
 - [x] dark
 - [x] light
-- [ ] modern
 <br>
 
 2) Format de la date :<br>
@@ -81,7 +80,6 @@ define('file_creator', true);
 - [ ] dupliquer un élément
 - [ ] télécharger un élément
 - [ ] ajouter les packs d'icons
-- [ ] faire le thème modern
 - [ ] Intégrer GoogleDrive pour stocker les fichiers/dossiers
 - [ ] ajouter des nouveaux thèmes
 - [ ] editer les réglages de configuration directement dans le WebDirectory
