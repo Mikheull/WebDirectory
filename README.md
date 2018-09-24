@@ -75,13 +75,14 @@ define('file_creator', true);
 - [x] ajouter les traductions
 - [x] faire le menu d'aide
 - [x] ajouter les raccourcis clavier
+- [x] editer les réglages de configuration directement dans le WebDirectory
+- [x] effectuer une mise a jour
 - [ ] securité sur la création de dossiers/fichiers
 - [ ] supprimer un élément
 - [ ] renommer un élément
 - [ ] dupliquer un élément
 - [ ] télécharger un élément
 - [ ] ajouter les packs d'icons
-- [ ] Intégrer GoogleDrive pour stocker les fichiers/dossiers
+- [ ] intégrer GoogleDrive pour stocker les fichiers/dossiers
 - [ ] ajouter des nouveaux thèmes
-- [x] editer les réglages de configuration directement dans le WebDirectory
 - [ ] ajouter des popups ( d'erreur, de succes, de confirmations )
