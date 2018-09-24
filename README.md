@@ -51,7 +51,7 @@ define('langage', 'FR');
 - [x] FR
 - [x] EN
 - [x] ES
-- [ ] AL
+- [x] AL
 <br>
 
 5) Quelques réglagles :<br>
