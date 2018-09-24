@@ -27,6 +27,12 @@ define('theme', 'dark');
 ```
 - [x] dark
 - [x] light
+- [x] blue
+- [x] red
+- [x] green
+- [x] orange
+- [x] purple
+- [x] yellow
 <br>
 
 2) Format de la date :<br>
@@ -77,6 +83,7 @@ define('file_creator', true);
 - [x] ajouter les raccourcis clavier
 - [x] editer les réglages de configuration directement dans le WebDirectory
 - [x] effectuer une mise a jour
+- [x] ajouter des nouveaux thèmes
 - [ ] securité sur la création de dossiers/fichiers
 - [ ] supprimer un élément
 - [ ] renommer un élément
@@ -84,5 +91,4 @@ define('file_creator', true);
 - [ ] télécharger un élément
 - [ ] ajouter les packs d'icons
 - [ ] intégrer GoogleDrive pour stocker les fichiers/dossiers
-- [ ] ajouter des nouveaux thèmes
 - [ ] ajouter des popups ( d'erreur, de succes, de confirmations )
