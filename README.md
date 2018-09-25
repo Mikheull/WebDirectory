@@ -1,8 +1,8 @@
-# WebDirectory
+# WebIE
 
-**WebDirectory** est un explorateur de fichiers/dossiers pour le web. Avec cet outil vous pourrez naviguez facilement entre vos dossiers, et créer autant de fichiers/dossiers que vous voulez directement depuis votre page web.
+**WebIE** est un explorateur de fichiers/dossiers pour le web. Avec cet outil vous pourrez naviguez facilement entre vos dossiers, et créer autant de fichiers/dossiers que vous voulez directement depuis votre page web.
 Vous pourrez également faire des actions sur les fichiers ( dupliquer, supprimer, télécharger )
-**WebDirectory** a été conçu pour plaire au maximum de gens, de ce fait il est configurable vous pouvez choisir un thème d'explorateur (dark, light, modern ..) ou mettre un des votres, changer le pack d'icon et la traduction de l'outil.
+**WebIE** a été conçu pour plaire au maximum de gens, de ce fait il est configurable vous pouvez choisir un thème d'explorateur (dark, light, modern ..) ou mettre un des votres, changer le pack d'icon et la traduction de l'outil.
 Vous pouvez désormais configurer votre outil directement depuis la page
 <br>
 
@@ -12,12 +12,12 @@ Vous pouvez désormais configurer votre outil directement depuis la page
 
 <br><hr>
 ### Installation :
-Pour l'installation rien de plus simple, télécharger le fichier [index.php](https://raw.githubusercontent.com/Mikheull/WebDirectory/master/index.php) et glisser le simplement dans les dossiers ou vous voulez avoir le **WebDirectory** .
+Pour l'installation rien de plus simple, télécharger le fichier [index.php](https://raw.githubusercontent.com/Mikheull/WebIE/master/index.php) et glisser le simplement dans les dossiers ou vous voulez avoir le **WebIE** .
 Voilà c'est tout, le script, par la suite, s'occupera de télécharger les fichiers dépendants tout seul.
 
 
 ### Configuration :
-Une grande partie de l'outil est ouvert a la configuration pour vous permettre d'avoir votre version de **WebDirectory** parfaite.
+Une grande partie de l'outil est ouvert a la configuration pour vous permettre d'avoir votre version de **WebIE** parfaite.
 *toutes les configurations se font en haut de la page index.php*
 
 1) Thème :<br>
@@ -95,7 +95,7 @@ define('file_creator', true);
 - [x] ajouter les traductions
 - [x] faire le menu d'aide
 - [x] ajouter les raccourcis clavier
-- [x] editer les réglages de configuration directement dans le WebDirectory
+- [x] editer les réglages de configuration directement dans WebIE
 - [x] effectuer une mise a jour
 - [x] ajouter des nouveaux thèmes
 - [x] créer la possibilité d'ajouter un theme custom 
