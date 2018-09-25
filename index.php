@@ -56,7 +56,10 @@ define('folder_creator', true);
 /**
  * Fonction de traduction des messages
  */
-$get = file_get_contents(cdn_link.'resources/translate/'. langage .'.json');
+if( langage == 'custom'){ $link_message = langage_custom_link; }
+else{ $link_message = cdn_link.'resources/translate/'. langage .'.json'; }
+
+$get = file_get_contents($link_message);
 $json_message = json_decode($get);
 
 
@@ -92,7 +95,7 @@ if(isset($_POST['mode'])){
     if($_POST['mode'] == 'folder'){
         if(isset($_POST['name'])){
             mkdir($_POST['name'], 0777); 
-            file_put_contents($_POST['name'].'/index.php', fopen(cdn_link ."/index.php", 'r'));
+            file_put_contents($_POST['name'].'/index.php', fopen("index.php", 'r'));
         }
     }
     if($_POST['mode'] == 'file'){
@@ -105,24 +108,24 @@ if(isset($_POST['mode'])){
 
 
 
-    if(isset($_POST['theme'])){
-        $file = file_get_contents('index.php');
-        $new_theme = $_POST['theme'];
-        $new_date_format = $_POST['date_format'];
-        $new_langage = $_POST['langage'];
-        $replace = str_replace("define('theme', '". theme ."');", "define('theme', '". $new_theme ."');", $file);
-        $replace = str_replace("define('date_format', '". date_format ."');", "define('date_format', '". $new_date_format ."');", $replace);
-        $replace = str_replace("define('langage', '". langage ."');", "define('langage', '". $new_langage ."');", $replace);
+if(isset($_POST['theme'])){
+    $file = file_get_contents('index.php');
+    $new_theme = $_POST['theme'];
+    $new_date_format = $_POST['date_format'];
+    $new_langage = $_POST['langage'];
+    $replace = str_replace("define('theme', '". theme ."');", "define('theme', '". $new_theme ."');", $file);
+    $replace = str_replace("define('date_format', '". date_format ."');", "define('date_format', '". $new_date_format ."');", $replace);
+    $replace = str_replace("define('langage', '". langage ."');", "define('langage', '". $new_langage ."');", $replace);
 
-        $fin = file_put_contents('index.php', $replace);
-        ?> <script> window.location.reload(true); </script> <?php
-    }
+    $fin = file_put_contents('index.php', $replace);
+    ?> <script> window.location.reload(true); </script> <?php
+}
 
 
-    if(isset($_POST['update'])){
-        file_put_contents('index.php', fopen(cdn_link ."/index.php", 'r'));
-        ?> <script> window.location.reload(true); </script> <?php
-    }
+if(isset($_POST['update'])){
+    file_put_contents('index.php', fopen(cdn_link ."/index.php", 'r'));
+    ?> <script> window.location.reload(true); </script> <?php
+}
     
 ?>
 
@@ -135,13 +138,20 @@ if(isset($_POST['mode'])){
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/reset.css">
-    <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css">
+    <?php
+    if( theme == 'custom'){
+        ?> <link rel="stylesheet" href="<?= theme_custom_link ?>"> <?php
+    }else{
+        ?> <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> <?php
+    }
+    ?>
+    
 
     <title><?= $page_name .' - '. $json_message ->{'title'} ?></title>
 </head>
 
 
-<body id="translate">
+<body>
 
     <header>
         <div class="centered">
@@ -314,7 +324,6 @@ if(isset($_POST['mode'])){
                                 if( theme !== 'purple'){ ?> <option value="purple">purple</option> <?php }
                                 if( theme !== 'red'){ ?> <option value="red">red</option> <?php }
                                 if( theme !== 'yellow'){ ?> <option value="yellow">yellow</option> <?php }
-                                if( theme !== 'custom'){ ?> <option value="custom">custom</option> <?php }
                             ?>
                         </select>
                     </div>
@@ -337,7 +346,6 @@ if(isset($_POST['mode'])){
                                 if( langage !== 'EN'){ ?> <option value="EN">EN</option> <?php }
                                 if( langage !== 'ES'){ ?> <option value="ES">ES</option> <?php }
                                 if( langage !== 'AL'){ ?> <option value="AL">AL</option> <?php }
-                                if( langage !== 'custom'){ ?> <option value="custom">custom</option> <?php }
                             ?>
                         </select>
                     </div>
