@@ -84,11 +84,24 @@ define('file_creator', true);
 - [x] editer les réglages de configuration directement dans le WebDirectory
 - [x] effectuer une mise a jour
 - [x] ajouter des nouveaux thèmes
+- [ ] trier les listes
+- [ ] detecter les mise a jour et mettre un message en cookie
+- [ ] détecter si localhost ou herbergement et faire une Auth unique si hebergement (ou local)
+- [ ] créer la possibilité d'ajouter un theme custom 
+- [ ] créer la possibilité d'ajouter un langage custom 
 - [ ] securité sur la création de dossiers/fichiers
+- [ ] ajouter un système de recherche (bouton, CTRL F)
 - [ ] supprimer un élément
+- [ ] archiver un élément (accessible dans une liste cachée en bas de page)
 - [ ] renommer un élément
 - [ ] dupliquer un élément
 - [ ] télécharger un élément
 - [ ] ajouter les packs d'icons
-- [ ] intégrer GoogleDrive pour stocker les fichiers/dossiers
+- [ ] ajouter plus de compatiblité d'icons de fichiers
+- [ ] cloner un fichier / dossier dans un AUTRE dossier
+- [ ] améliorer la vitesse d'affichage, afficher uniquement des divs vides au début, puis les remplir avec le chargement
+- [ ] intégrer GoogleDrive, Dropbox et GitHub pour stocker les fichiers/dossiers
 - [ ] ajouter des popups ( d'erreur, de succes, de confirmations )
+- [ ] rendre compatible tout navigateur, tout OS
+- [ ] rendre responsive l'outil
+- [ ] créer le site de presentation de cet outil (page github)
