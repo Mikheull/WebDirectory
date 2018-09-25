@@ -37,8 +37,8 @@ define('', '');
  * 
  */
 // A mettre quand je lance en prod
-// define('cdn_link', 'https://cdn.rawgit.com/Mikheull/WebDirectory/master/');
-define('cdn_link', 'https://rawgit.com/Mikheull/WebDirectory/master/');
+// define('cdn_link', 'https://cdn.rawgit.com/Mikheull/WebIE/master/');
+define('cdn_link', 'https://rawgit.com/Mikheull/WebIE/master/');
 define('file_creator', true);
 define('folder_creator', true);
 
@@ -249,7 +249,7 @@ if(isset($_POST['update'])){
     
     <footer>
         <div class="centered">
-            <p><a href="https://github.com/Mikheull/WebDirectory">WebDirectory</a> <?= $json_message ->{'footer_cop'} ?> <a href="https://mikhaelbailly.fr/">Mikhaël Bailly</a></p>
+            <p><a href="https://github.com/Mikheull/WebIE">WebIE</a> <?= $json_message ->{'footer_cop'} ?> <a href="https://mikhaelbailly.fr/">Mikhaël Bailly</a></p>
         </div>
         
     </footer>
@@ -473,7 +473,7 @@ if(isset($_POST['update'])){
         // Raccourci clavier -> Aller au github
         if(e.shiftKey && (e.which == 71)) {
             e.preventDefault();
-            window.open('https://github.com/Mikheull/WebDirectory','_blank');
+            window.open('https://github.com/Mikheull/WebIE','_blank');
             return false;
         }
 
