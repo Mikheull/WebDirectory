@@ -34,6 +34,13 @@ define('theme', 'dark');
 - [x] purple
 - [x] yellow
 <br>
+Ou
+<br>
+```php
+define('theme', 'custom');
+define('theme_custom_link', 'https://votre-lien.fr');
+```
+<br>
 
 2) Format de la date :<br>
 *modifiez votre format*
@@ -58,6 +65,13 @@ define('langage', 'FR');
 - [x] EN
 - [x] ES
 - [x] AL
+<br>
+Ou
+<br>
+```php
+define('langage', 'custom');
+define('langage_custom_link', 'https://votre-lien.fr');
+```
 <br>
 
 5) Quelques réglagles :<br>
