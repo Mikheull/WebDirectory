@@ -53,6 +53,11 @@ define('folder_creator', true);
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/**
+ * Fonction de traduction des messages
+ */
+$get = file_get_contents(cdn_link.'resources/translate/'. langage .'.json');
+$json_message = json_decode($get);
 
 
 
@@ -118,8 +123,7 @@ if(isset($_POST['mode'])){
         file_put_contents('index.php', fopen(cdn_link ."/index.php", 'r'));
         ?> <script> window.location.reload(true); </script> <?php
     }
-
-
+    
 ?>
 
 
@@ -133,7 +137,7 @@ if(isset($_POST['mode'])){
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/reset.css">
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css">
 
-    <title>WebDirectory</title>
+    <title><?= $page_name .' - '. $json_message ->{'title'} ?></title>
 </head>
 
 
@@ -163,8 +167,8 @@ if(isset($_POST['mode'])){
             <ul>
                 <li class="help" style="padding: 5px"> <i class="far fa-question-circle"></i> </li>
                 <?php
-                if(folder_creator == true){ ?> <li class="new_folder btn"> <i class="far fa-folder"></i> <span>{{%new_folder%}}</span> </li> <?php }
-                if(file_creator == true){ ?> <li class="new_file btn"> <i class="far fa-file"></i> <span>{{%new_file%}}</span> </li> <?php }
+                if(folder_creator == true){ ?> <li class="new_folder btn"> <i class="far fa-folder"></i> <span><?= $json_message ->{'new_folder'} ?></span> </li> <?php }
+                if(file_creator == true){ ?> <li class="new_file btn"> <i class="far fa-file"></i> <span><?= $json_message ->{'new_file'} ?></span> </li> <?php }
                 ?>
             </ul>
         </div>
@@ -176,9 +180,9 @@ if(isset($_POST['mode'])){
         <div class="centered">
             <ul>
                 <li class="head">
-                    <div class="columns c-6"> <p>{{%name%}}</p> </div>
-                    <div class="columns c-2"> <p>{{%size%}}</p> </div>
-                    <div class="columns c-2"> <p>{{%date%}}</p> </div>
+                    <div class="columns c-6"> <p><?= $json_message ->{'name'} ?></p> </div>
+                    <div class="columns c-2"> <p><?= $json_message ->{'size'} ?></p> </div>
+                    <div class="columns c-2"> <p><?= $json_message ->{'date'} ?></p> </div>
                 </li>
 
                 <?php
@@ -231,9 +235,11 @@ if(isset($_POST['mode'])){
         </div>
     </section>
 
+
+    
     <footer>
         <div class="centered">
-            <p><a href="https://github.com/Mikheull/WebDirectory">WebDirectory</a> a été développé par <a href="https://mikhaelbailly.fr/">Mikhaël Bailly</a></p>
+            <p><a href="https://github.com/Mikheull/WebDirectory">WebDirectory</a> <?= $json_message ->{'footer_cop'} ?> <a href="https://mikhaelbailly.fr/">Mikhaël Bailly</a></p>
         </div>
         
     </footer>
@@ -244,41 +250,41 @@ if(isset($_POST['mode'])){
         <div class="mdl help_modal">
             <div class="mdl_container">
                 <div class="head">
-                    <p class="title">Raccourcis Claviers</p> <div class="key"><span>CTRL</span> <span>/</span></div>
-                    <p class="subtitle">Gagnez de la rapidité avec ces quelques raccourcis claviers</p>
+                    <p class="title"><?= $json_message ->{'help_mdl_title'} ?></p> <div class="key"><span>CTRL</span> <span>/</span></div>
+                    <p class="subtitle"><?= $json_message ->{'help_mdl_subtitle'} ?></p>
                 </div>
                 
                 <div class="body">
                     <?php 
                         if(folder_creator == true){ ?> 
                             <div class="item">
-                                <div class="title">Créer un dossier</div>
+                                <div class="title"><?= $json_message ->{'help_mdl_folder_create_title'} ?></div>
                                 <div class="key"> <span>SHIFT</span> <span>D</span> </div>
                             </div>
                         <?php }
                 
                         if(file_creator == true){ ?> 
                             <div class="item">
-                                <div class="title">Créer un fichier</div>
+                                <div class="title"><?= $json_message ->{'help_mdl_file_create_title'} ?></div>
                                 <div class="key"> <span>SHIFT</span> <span>F</span> </div>
                             </div>
                         <?php }
                     ?>
                 
                     <div class="item">
-                        <div class="title">Mettre a jour</div>
+                        <div class="title"><?= $json_message ->{'help_mdl_update'} ?></div>
                         <div class="key"> <span>SHIFT</span> <span>U</span> </div>
                     </div>
                     <div class="item">
-                        <div class="title">Ouvrir la config</div>
+                        <div class="title"><?= $json_message ->{'help_mdl_config'} ?></div>
                         <div class="key"> <span>SHIFT</span> <span>C</span> </div>
                     </div>
                     <div class="item">
-                        <div class="title">Aller au Github</div>
+                        <div class="title"><?= $json_message ->{'help_mdl_github'} ?></div>
                         <div class="key"> <span>SHIFT</span> <span>G</span> </div>
                     </div>
                     <div class="item">
-                        <div class="title">Annuler, quitter un popup</div>
+                        <div class="title"><?= $json_message ->{'help_mdl_esc'} ?></div>
                         <div class="key"> <span>ESC</span> </div>
                     </div>
                 </div>
@@ -288,14 +294,14 @@ if(isset($_POST['mode'])){
         <div class="mdl config_modal">
             <div class="mdl_container">
                 <div class="head">
-                    <p class="title">Configuration</p> <div class="key"><span>SHIFT</span> <span>C</span></div>
-                    <p class="subtitle">Faite votre configuration simplement</p>
+                    <p class="title"><?= $json_message ->{'config_mdl_title'} ?></p> <div class="key"><span>SHIFT</span> <span>C</span></div>
+                    <p class="subtitle"><?= $json_message ->{'config_mdl_subtitle'} ?></p>
                 </div>
                 
                 <div class="body">
                     <div class="input-group">
-                        <label for="theme">Thème</label>
-                        <small>Changer de thème facilement </small>
+                        <label for="theme"><?= $json_message ->{'config_mdl_theme_title'} ?></label>
+                        <small><?= $json_message ->{'config_mdl_theme_subtitle'} ?></small>
                         <span><i class="fas fa-palette"></i></span>
                         <select name="theme" id="theme">
                             <option value="<?= theme ?>"><?= theme ?></option>
@@ -314,15 +320,15 @@ if(isset($_POST['mode'])){
                     </div>
 
                     <div class="input-group">
-                        <label for="date_format">Format de la date</label>
-                        <small>Configurer votre propre format de date. <a href="http://php.net/manual/fr/function.date.php" target="blank">Documentation</a> </small>
+                        <label for="date_format"><?= $json_message ->{'config_mdl_date_title'} ?></label>
+                        <small><?= $json_message ->{'config_mdl_date_subtitle'} ?> <a href="http://php.net/manual/fr/function.date.php" target="blank"><?= $json_message ->{'config_mdl_date_subtitle_doc'} ?></a> </small>
                         <span><i class="fas fa-calendar-alt"></i></span>
                         <input type="text" value="<?= date_format ?>" id="date_format" placeholder="Date format">
                     </div>
 
                     <div class="input-group">
-                        <label for="langage">Langage</label>
-                        <small>Changer de langage comme bon vous semble </small>
+                        <label for="langage"><?= $json_message ->{'config_mdl_langage_title'} ?></label>
+                        <small><?= $json_message ->{'config_mdl_langage_subtitle'} ?></small>
                         <span><i class="fas fa-language"></i></span>
                         <select name="langage" id="langage">
                             <option value="<?= langage ?>"><?= langage ?></option>
@@ -336,13 +342,13 @@ if(isset($_POST['mode'])){
                         </select>
                     </div>
 
-                    <span class="save_config">Sauvegarder</span>
+                    <span class="save_config"><?= $json_message ->{'save_button'} ?></span>
                 </div>
             </div>
         </div>
 
         <div class="mdl file-action_modal">
-
+            <a href="temp.html" download> file_name </a>
         </div>
 
         <div class="mdl folder-action_modal">
@@ -418,8 +424,7 @@ if(isset($_POST['mode'])){
         // Raccourci clavier -> Menu d'aide
         if(e.shiftKey && (e.which == 85)) {
             e.preventDefault();
-            if (confirm("Faire la mise a jour!")) {
-                console.log("You pressed OK!");
+            if (confirm("<?= $json_message ->{'update'} ?>")) {
                 $.ajax({
                     method: 'POST',
                     url: 'index.php',
@@ -517,27 +522,7 @@ if(isset($_POST['mode'])){
     });
 
 
-
-
-    // Récupérer les traductions des messages
-    // $.getJSON( "<?= cdn_link ?>resources/translate/<?= langage ?>.json", function( data ) {
-    //     var items = [];
-    //     var n = 0;
-    //     $.each( data, function( key, val ) {
-    //         items.push( val );
-    //         translate('{{%'+ key +'%}}', items[n])
-    //         n++;
-    //     });
     
-    // });
-    
-    // function translate(string, res){
-    //     var str = document.getElementById("translate").innerHTML; 
-    //     var res = str.replace(string, res);
-    //     document.getElementById("translate").innerHTML = res;
-         
-    // }
-
     
 
 
@@ -556,14 +541,14 @@ if(isset($_POST['mode'])){
         if(folder_creator == true){ ?> 
             function OpenCreateFolder(){
                 $( ".input_file" ).remove();
-                $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' class='create_input' placeholder='{{%folder_name%}}'> </div> </li>" );
+                $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' class='create_input' placeholder='<?= $json_message ->{'folder_name'} ?>'> </div> </li>" );
                 $( "input" ).focus();
             }
         <?php }
         if(file_creator == true){ ?> 
             function OpenCreateFile(){
                 $( ".input_folder" ).remove();
-                $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' class='create_input' placeholder='{{%file_name%}}'> </div> </li>" );
+                $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' class='create_input' placeholder='<?= $json_message ->{'file_name'} ?>'> </div> </li>" );
                 $( "input" ).focus();
             }
         <?php }
