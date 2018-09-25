@@ -35,7 +35,7 @@ define('theme', 'dark');
 - [x] yellow
 <br>
 Ou
-<br>
+
 ```php
 define('theme', 'custom');
 define('theme_custom_link', 'https://votre-lien.fr');
@@ -67,7 +67,7 @@ define('langage', 'FR');
 - [x] AL
 <br>
 Ou
-<br>
+
 ```php
 define('langage', 'custom');
 define('langage_custom_link', 'https://votre-lien.fr');
