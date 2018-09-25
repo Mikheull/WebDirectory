@@ -84,11 +84,11 @@ define('file_creator', true);
 - [x] editer les réglages de configuration directement dans le WebDirectory
 - [x] effectuer une mise a jour
 - [x] ajouter des nouveaux thèmes
+- [x] créer la possibilité d'ajouter un theme custom 
+- [x] créer la possibilité d'ajouter un langage custom 
 - [ ] trier les listes
 - [ ] detecter les mise a jour et mettre un message en cookie
-- [ ] détecter si localhost ou herbergement et faire une Auth unique si hebergement (ou local)
-- [ ] créer la possibilité d'ajouter un theme custom 
-- [ ] créer la possibilité d'ajouter un langage custom 
+- [ ] détecter si localhost ou hebergement et faire une Auth unique si hebergement (ou local)
 - [ ] securité sur la création de dossiers/fichiers
 - [ ] ajouter un système de recherche (bouton, CTRL F)
 - [ ] supprimer un élément
