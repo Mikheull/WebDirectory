@@ -6,5 +6,29 @@
     "size": "Größe",
     "date": "Änderungszeitpunkt",
     "folder_name": "Namen der Akte",
-    "file_name": "Namen der Datei"
+    "file_name": "Namen der Datei",
+
+    "help_mdl_title": "Kurzbefehle",
+    "help_mdl_subtitle": "Gewinnen Sie der Geschwindigkeit mit diesen einigen Abkürzungen Klaviaturen",
+    "help_mdl_folder_create_title": "Eine Akte schaffen",
+    "help_mdl_file_create_title": "Eine Datei schaffen",
+    "help_mdl_update": "Legen hat Tag",
+    "help_mdl_config": "Den config öffnen",
+    "help_mdl_github": "In Github gehen",
+    "help_mdl_esc": "Aufheben, einen popup verlassen",
+
+    "config_mdl_title": "Konfiguration",
+    "config_mdl_subtitle": "Gemacht Ihre Gestalt einfach.",
+    "config_mdl_theme_title": "Thema",
+    "config_mdl_theme_subtitle": "Das thema leicht wechseln.",
+    "config_mdl_date_title": "Format des Zeitpunktes",
+    "config_mdl_date_subtitle": "Ihr eigenes datumsformat konfigurieren.",
+    "config_mdl_date_subtitle_doc": "Dokumentation",
+    "config_mdl_langage_title": "Sprache",
+    "config_mdl_langage_subtitle": "Die Sprache wie Scheck zu wechseln scheinen Ihnen",
+
+    "save_button": "Schützen",
+    "update": "Das Legen zu machen hat Tag!",
+
+    "footer_cop": "ist von entwickelt gewesen"
 }

@@ -6,5 +6,29 @@
     "size": "Size",
     "date": "Date of modify",
     "folder_name": "Folder's name",
-    "file_name": "File's name"
+    "file_name": "File's name",
+
+    "help_mdl_title": "Keyboard Shortcuts",
+    "help_mdl_subtitle": "Gain of the speed with these few keyboard shortcuts",
+    "help_mdl_folder_create_title": "Create a folder",
+    "help_mdl_file_create_title": "Create a file",
+    "help_mdl_update": "Update",
+    "help_mdl_config": "Open the config",
+    "help_mdl_github": "Go to Github",
+    "help_mdl_esc": "Cancel, leave a popup",
+
+    "config_mdl_title": "Configuration",
+    "config_mdl_subtitle": "Made your configuration simply.",
+    "config_mdl_theme_title": "Theme",
+    "config_mdl_theme_subtitle": "Change theme easily.",
+    "config_mdl_date_title": "Date format",
+    "config_mdl_date_subtitle": "Configure your own size of date.",
+    "config_mdl_date_subtitle_doc": "Documentation",
+    "config_mdl_langage_title": "Language",
+    "config_mdl_langage_subtitle": "Change language as you think best",
+
+    "save_button": "Save",
+    "update": "Make the update!",
+
+    "footer_cop": "was developed by"
 }

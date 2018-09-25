@@ -6,5 +6,29 @@
     "size": "Taille",
     "date": "Date de modification",
     "folder_name": "Nom du dossier",
-    "file_name": "Nom du fichier"
+    "file_name": "Nom du fichier",
+
+    "help_mdl_title": "Raccourcis Claviers",
+    "help_mdl_subtitle": "Gagnez de la rapidité avec ces quelques raccourcis claviers",
+    "help_mdl_folder_create_title": "Créer un dossier",
+    "help_mdl_file_create_title": "Créer un fichier",
+    "help_mdl_update": "Mettre a jour",
+    "help_mdl_config": "Ouvrir la config",
+    "help_mdl_github": "Aller au Github",
+    "help_mdl_esc": "Annuler, quitter un popup",
+
+    "config_mdl_title": "Configuration",
+    "config_mdl_subtitle": "Faite votre configuration simplement.",
+    "config_mdl_theme_title": "Thème",
+    "config_mdl_theme_subtitle": "Changer de thème facilement.",
+    "config_mdl_date_title": "Format de la date",
+    "config_mdl_date_subtitle": "Configurer votre propre format de date.",
+    "config_mdl_date_subtitle_doc": "Documentation",
+    "config_mdl_langage_title": "Langage",
+    "config_mdl_langage_subtitle": "Changer de langage comme bon vous semble",
+
+    "save_button": "Sauvegarder",
+    "update": "Faire la mise a jour!",
+
+    "footer_cop": "a été développé par"
 }

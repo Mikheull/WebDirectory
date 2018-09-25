@@ -6,5 +6,29 @@
     "size": "Tamaño",
     "date": "Fecha de modificación",
     "folder_name": "Nombre de la carpeta",
-    "file_name": "Nombre del archivo"
+    "file_name": "Nombre del archivo",
+
+    "help_mdl_title": "Accesos Rápidos",
+    "help_mdl_subtitle": "Gane de la rapidez con estas algunas teclas aceleradoras",
+    "help_mdl_folder_create_title": "Crear un carpeta",
+    "help_mdl_file_create_title": "Crear un archivo",
+    "help_mdl_update": "Poner tiene día",
+    "help_mdl_config": "Abrir el config",
+    "help_mdl_github": "Ir a Github",
+    "help_mdl_esc": "Anular, dejar un popup",
+
+    "config_mdl_title": "Configuración",
+    "config_mdl_subtitle": "Hecha su configuración simplemente.",
+    "config_mdl_theme_title": "Tema",
+    "config_mdl_theme_subtitle": "Cambiar de tema fácilmente.",
+    "config_mdl_date_title": "Formato de la fecha",
+    "config_mdl_date_subtitle": "Configurar su propio formato de fecha.",
+    "config_mdl_date_subtitle_doc": "Documentación",
+    "config_mdl_langage_title": "Lenguaje",
+    "config_mdl_langage_subtitle": "Cambiar de lenguaje como bono le parece",
+
+    "save_button": "Salvaguardar",
+    "update": "¡ Hacer la postura tiene día!",
+
+    "footer_cop": "fue desarrollado por"
 }
