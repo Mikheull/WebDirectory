@@ -100,16 +100,16 @@ define('file_creator', true);
 - [x] ajouter des nouveaux thèmes
 - [x] créer la possibilité d'ajouter un theme custom 
 - [x] créer la possibilité d'ajouter un langage custom 
+- [x] supprimer un élément
+- [x] archiver un élément (accessible dans une liste cachée en bas de page)
+- [x] dupliquer un élément
+- [x] télécharger un élément
 - [ ] trier les listes
 - [ ] detecter les mise a jour et mettre un message en cookie
 - [ ] détecter si localhost ou hebergement et faire une Auth unique si hebergement (ou local)
 - [ ] securité sur la création de dossiers/fichiers
 - [ ] ajouter un système de recherche (bouton, CTRL F)
-- [ ] supprimer un élément
-- [ ] archiver un élément (accessible dans une liste cachée en bas de page)
 - [ ] renommer un élément
-- [ ] dupliquer un élément
-- [ ] télécharger un élément
 - [ ] ajouter les packs d'icons
 - [ ] ajouter plus de compatiblité d'icons de fichiers
 - [ ] cloner un fichier / dossier dans un AUTRE dossier
