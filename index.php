@@ -167,31 +167,7 @@ if(isset($_POST['act'])){
     if( theme == 'custom'){
         ?> <link rel="stylesheet" href="<?= theme_custom_link ?>"> <?php
     }else{
-        ?> <!-- <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> --> <?php
-        ?> <link rel="stylesheet" href="resources/themes/<?= theme ;?>.css"> <?php
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        ?> <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> <?php
 
 
     }
