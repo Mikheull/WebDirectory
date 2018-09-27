@@ -126,7 +126,32 @@ if(isset($_POST['update'])){
     file_put_contents('index.php', fopen(cdn_link ."/index.php", 'r'));
     ?> <script> window.location.reload(true); </script> <?php
 }
-    
+
+
+
+
+if(isset($_POST['act'])){
+    if($_POST['act'] == 'archive'){
+        $name = $_POST['name'];
+        $new_name = '___archived___'.$_POST['name'];
+        rename($name, $new_name);
+    }
+    if($_POST['act'] == 'unarchive'){
+        $name = $_POST['name'];
+        $new_name = str_replace("___archived___", "", $name);
+        rename($name, $new_name);
+    }
+    if($_POST['act'] == 'delete'){
+        $name = $_POST['name'];
+        unlink($name);
+    }
+    if($_POST['act'] == 'clone'){
+        $name = $_POST['name'];
+        $new_name = '1-'.$_POST['name'];
+        file_put_contents($new_name, fopen($name, 'r'));
+    }
+}
+  
 ?>
 
 
@@ -142,11 +167,39 @@ if(isset($_POST['update'])){
     if( theme == 'custom'){
         ?> <link rel="stylesheet" href="<?= theme_custom_link ?>"> <?php
     }else{
-        ?> <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> <?php
+        ?> <!-- <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> --> <?php
+        ?> <link rel="stylesheet" href="resources/themes/<?= theme ;?>.css"> <?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
     ?>
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
 
+<script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
     <title><?= $page_name .' - '. $json_message ->{'title'} ?></title>
 </head>
 
@@ -188,6 +241,7 @@ if(isset($_POST['update'])){
 
     <section class="container">
         <div class="centered">
+
             <ul>
                 <li class="head">
                     <div class="columns c-6"> <p><?= $json_message ->{'name'} ?></p> </div>
@@ -212,34 +266,114 @@ if(isset($_POST['update'])){
                 <div id="new"></div>
 
                 <?php
-                foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
-                    if ( !$file->isDot() && $file -> getFilename() !== '.DS_Store'){
-                        $extension_icon = 'far fa-file';
+                    foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
+                        if ( !$file->isDot() && $file -> getFilename() !== '.DS_Store' && !strstr($file -> getFilename(), '___archived___')){
+                            $extension_icon = 'far fa-file';
+                            $data_mode = 'undefined';
 
-                        if($file -> getExtension() == 'php'){$extension_icon = 'fab fa-php';}
-                        if($file -> getExtension() == 'css'){$extension_icon = 'fab fa-css3-alt';}
-                        if($file -> getExtension() == 'js'){$extension_icon = 'fab fa-js';}
-                        if($file -> getExtension() == 'html'){$extension_icon = 'fab fa-html5';}
-                        if($file -> getExtension() == 'txt'){$extension_icon = 'fas fa-font';}
-                        if($file -> getExtension() == 'md'){$extension_icon = 'fab fa-markdown';}
-                        if($file -> getExtension() == 'xml'){$extension_icon = 'fab fa-file-excel';}
-                        if($file -> getExtension() == 'pdf'){$extension_icon = 'fas fa-file-pdf';}
-                        if($file -> isDir()){$extension_icon = 'far fa-folder';}
-                        if(@is_array(getimagesize($file))){ $extension_icon = 'far fa-image'; }
-                        if(is_resource($zip = zip_open($file))){ zip_close($zip); $extension_icon = 'far fa-file-archive'; }
-                        if(preg_match('/^.*\.(mp4|mov)$/i', $file)){ $extension_icon = 'far fa-file-video'; }
-                    ?>
-                    <li class="item">
-                        <a href="<?= $file -> getFilename() ;?>">
-                            <div class="columns c-6 title"> <i class="<?= $extension_icon ;?>"></i> <span><?= $file -> getFilename() ;?></span> </div>
-                            <div class="columns c-2"> <p><?= convertToReadableSize($file -> getSize()) ;?></p> </div>
-                            <div class="columns c-2"> <p><?= date (date_format, $file->getATime()) ;?></p> </div>
-                        </a>
-                    </li>
-                    <?php
+                            if($file -> getExtension() == 'php'){$extension_icon = 'fab fa-php'; $data_mode = 'file';}
+                            if($file -> getExtension() == 'css'){$extension_icon = 'fab fa-css3-alt'; $data_mode = 'file';}
+                            if($file -> getExtension() == 'js'){$extension_icon = 'fab fa-js'; $data_mode = 'file';}
+                            if($file -> getExtension() == 'html'){$extension_icon = 'fab fa-html5'; $data_mode = 'file';}
+                            if($file -> getExtension() == 'txt'){$extension_icon = 'fas fa-font'; $data_mode = 'file';}
+                            if($file -> getExtension() == 'md'){$extension_icon = 'fab fa-markdown'; $data_mode = 'file';}
+                            if($file -> getExtension() == 'xml'){$extension_icon = 'fab fa-file-excel'; $data_mode = 'file';}
+                            if($file -> getExtension() == 'pdf'){$extension_icon = 'fas fa-file-pdf'; $data_mode = 'file';}
+                            if($file -> isDir()){$extension_icon = 'far fa-folder'; $data_mode = 'folder';}
+                            if(@is_array(getimagesize($file))){ $extension_icon = 'far fa-image'; $data_mode = 'image'; }
+                            if(is_resource($zip = zip_open($file))){ zip_close($zip); $extension_icon = 'far fa-file-archive'; $data_mode = 'archive'; }
+                            if(preg_match('/^.*\.(mp4|mov)$/i', $file)){ $extension_icon = 'far fa-file-video'; $data_mode = 'video'; }
+                        ?>
+                        <li class="popover item" data-id="<?= $file -> getInode() ;?>">
+                            <div id="<?= $file -> getInode() ;?>" class="act_popover">
+                                <?php 
+                                if($data_mode == 'file' OR $data_mode == 'video' OR $data_mode == 'image' OR $data_mode == 'archive'){
+                                ?>
+                                <div class='body'>
+                                    <ul> 
+                                        <li class="item" data-mode="rename"><a> <i class='far fa-edit'></i> </a></li> 
+                                        <li class="item" data-mode="clone" data-name="<?= $file -> getFilename() ;?>"><a> <i class='far fa-clone'></i> </a></li> 
+                                        <li class="item" data-mode="download"> <a href="<?= $file -> getFilename() ;?>" download> <i class='fas fa-download'></i> </a></li> 
+                                        <li class="item" data-mode="delete" data-name="<?= $file -> getFilename() ;?>"><a> <i class='far fa-trash-alt'></i> </a></li> 
+                                        <li class="item" data-mode="archive" data-name="<?= $file -> getFilename() ;?>"><a> <i class='fas fa-archive'></i> </a></li> 
+                                    </ul>
+                                    <div class="pp"></div>
+                                </div>
+                                <?php
+                                }else if($data_mode == 'folder'){
+                                ?>
+                                <div class='body'>
+                                    <ul> 
+                                        <li class='item' data-mode="rename"><a> <i class='far fa-edit'></i> </a></li> 
+                                        <li class='item' data-mode="delete" data-name="<?= $file -> getFilename() ;?>"><a> <i class='far fa-trash-alt'></i> </a></li> 
+                                        <li class='item' data-mode="archive" data-name="<?= $file -> getFilename() ;?>"><a> <i class='fas fa-archive'></i> </a></li> 
+                                    </ul>
+                                </div>
+                                <?php
+                                }else{
+                                ?>
+                                <div class='body'>
+                                    <ul> 
+                                        <li class='item' data-mode="rename"><a> <i class='far fa-edit'></i> </a></li> 
+                                        <li class='item' data-mode="download"><a href="<?= $file -> getFilename() ;?>" download> <i class='fas fa-download'></i> </a></li> 
+                                        <li class='item' data-mode="delete" data-name="<?= $file -> getFilename() ;?>"><a> <i class='far fa-trash-alt'></i> </a></li> 
+                                        <li class='item' data-mode="archive" data-name="<?= $file -> getFilename() ;?>"><a> <i class='fas fa-archive'></i> </a></li> 
+                                    </ul>
+                                </div>
+                                <?php
+                                }
+                                ?>
+                                <div class="arrow-down"></div>
+                            </div>
+                            
+                            <a href="<?= $file -> getFilename() ;?>">
+                                <div class="columns c-6 title"> <i class="<?= $extension_icon ;?>"></i> <span><?= $file -> getFilename() ;?></span> </div>
+                                <div class="columns c-2"> <p><?= convertToReadableSize($file -> getSize()) ;?></p> </div>
+                                <div class="columns c-2"> <p><?= date (date_format, $file->getATime()) ;?></p> </div>
+                            </a>
+                        </li>
+                        <?php
+                        }
                     }
-                }
-                ?>
+                
+                    ?>
+                </ul>
+
+
+                    
+                <ul>
+                    <details>
+                    <summary>Archiver</summary>
+                
+                    
+                    <?php
+                    foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
+                        if ( !$file->isDot() && $file -> getFilename() !== '.DS_Store' && strstr($file -> getFilename(), '___archived___')){
+                        ?>
+                        <li class="popover item" data-id="<?= $file -> getInode() ;?>">
+                            <div id="<?= $file -> getInode() ;?>" class="act_popover">
+                                
+                                <div class='body'>
+                                    <ul> 
+                                        <li class='item' data-mode="unarchive" data-name="<?= $file -> getFilename() ;?>"><a> <i class='fas fa-box-open'></i> </a></li> 
+                                    </ul>
+                                </div>
+                                
+                                <div class="arrow-down"></div>
+                            </div>
+                            
+                            <a href="<?= $file -> getFilename() ;?>">
+                                <div class="columns c-6 title"> <i class="fas fa-lock"></i> <span><?= str_replace("___archived___", "", $file -> getFilename()); ;?></span> </div>
+                                <div class="columns c-2"> <p><?= convertToReadableSize($file -> getSize()) ;?></p> </div>
+                                <div class="columns c-2"> <p><?= date (date_format, $file->getATime()) ;?></p> </div>
+                            </a>
+                        </li>
+                        <?php
+                        }
+                    }
+
+                    ?>
+                </details> 
             </ul>
 
         </div>
@@ -354,14 +488,6 @@ if(isset($_POST['update'])){
                 </div>
             </div>
         </div>
-
-        <div class="mdl file-action_modal">
-            <a href="temp.html" download> file_name </a>
-        </div>
-
-        <div class="mdl folder-action_modal">
-
-        </div>
     </section>
 
 
@@ -407,8 +533,6 @@ if(isset($_POST['update'])){
             } 
         });
     });
-
-
 
 
 
@@ -494,6 +618,10 @@ if(isset($_POST['update'])){
                 $('header, footer, .container').removeClass('blur');
                 $( ".config_modal" ).hide();
             }
+            if ( $( ".act_popover" ).length ) {
+                e.preventDefault();
+                $( ".act_popover" ).hide();
+            }
             return false;
         }
 
@@ -523,15 +651,34 @@ if(isset($_POST['update'])){
 
 
     // Clic gauche pour ourvir un menu sur un fichier / dossier
-    $('.item').contextmenu(function(e) {
+    $('.popover').contextmenu(function(e) {
         e.preventDefault();
-        alert("Clic droit");
-        $( this + "span" ).hide();
+        var id = this.dataset.id;
+
+        $( ".act_popover" ).hide();
+        $( "#" + id ).show();
     });
-
-
     
-    
+    $( ".popover .item" ).click(function() {
+        var name = this.dataset.name;
+        var act = this.dataset.mode;
+        $.ajax({
+            method: 'POST',
+            url: 'index.php',
+            data: {act: act, name: name},
+            success: function(data) {
+                $('body').html(data);
+            } 
+        });
+    });
+    $( ".popover .item" ).hover(function() {
+        var act = this.dataset.mode;
+        $( ".pp" ).empty();
+        $( ".pp" ).append( act );
+    }, function() {
+        $( ".pp" ).empty();
+        $( ".pp" ).append( '-' );
+    });
 
 
     // Fonctions globales
