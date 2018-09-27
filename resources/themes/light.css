@@ -58,6 +58,13 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 .mdl .save_config {background: #343a40;padding: 5px;border-radius: 6px;color: #FFF;text-align: center;margin: 0 45%;cursor: pointer;}
 
 
+/* PopOver */
+.act_popover {width: 15%;margin: 25px 42.5% 5px;text-align: center;display: none;float: left;position: relative; left: 0;;}
+.act_popover .body {padding: 25px 0;width: auto;text-align: center;border-radius: 3px;background: #353535;padding: 5px 0;color: #FFF}
+.act_popover .body ul li {display: inline-block;margin: 0 2.5px;color: #FFF;padding: 5px;cursor: pointer;}
+.act_popover .body a {color: #FFF;margin: 0;padding: 0;}
+.act_popover .arrow-down {width: 0; height: 0;margin: 2px 43%; border-left: 15px solid transparent;border-right: 15px solid transparent;border-top: 15px solid #353535;}
+
 /* Footer */
 footer {text-align: center;margin: 50px 0 0;float: left;color: #353535}
 footer a:visited, a:link {color: #555555;}
