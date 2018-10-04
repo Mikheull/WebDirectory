@@ -48,7 +48,7 @@ define('element_edit', true);
  * Ajouter une Connexion
  * 
  */
-define('auth', true);
+define('auth', false);
 // Modifier ce token par le votre
 define('token', 'root');
 
