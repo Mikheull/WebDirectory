@@ -95,7 +95,7 @@ define('element_edit', true);
 *Gérer la sécurité*<br>
 Activer ou non l'authentification (true - false)
 ```php
-define('auth', true);
+define('auth', false);
 ```
 Définir un mot de passe (changer celui par défaut ! (lors d'une update il sera remis par défaut) )
 ```php
