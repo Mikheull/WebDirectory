@@ -176,6 +176,8 @@ if(auth == true){
     if(isset($_POST['logout'])){
         unset($_SESSION['connected']);
     }
+}else{
+    $_SESSION['connected'] = true ;
 }
 
 
