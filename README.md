@@ -3,7 +3,8 @@
 **WebIE** est un explorateur de fichiers/dossiers pour le web. Avec cet outil vous pourrez naviguez facilement entre vos dossiers, et créer autant de fichiers/dossiers que vous voulez directement depuis votre page web.
 Vous pourrez également faire des actions sur les fichiers ( dupliquer, supprimer, télécharger )
 **WebIE** a été conçu pour plaire au maximum de gens, de ce fait il est configurable vous pouvez choisir un thème d'explorateur (dark, light, modern ..) ou mettre un des votres, changer le pack d'icon et la traduction de l'outil.
-Vous pouvez désormais configurer votre outil directement depuis la page
+Vous pouvez désormais configurer votre outil directement depuis la page.
+Pour plus de sécurité, vous pouvez définir un mot de passe pour accéder au panel (ou le désactiver)
 <br>
 
 ### Requirements :
@@ -84,6 +85,22 @@ Outil de création de dossier (true - false)
 ```php
 define('file_creator', true);
 ```
+Outil pour éditer un élement (true - false)
+```php
+define('element_edit', true);
+```
+<br>
+
+6) Option de connexion :<br>
+*Gérer la sécurité*<br>
+Activer ou non l'authentification (true - false)
+```php
+define('auth', true);
+```
+Définir un mot de passe (changer celui par défaut ! (lors d'une update il sera remis par défaut) )
+```php
+define('token', 'root');
+```
 <br><hr>
 
 ### TO-DO :
@@ -104,9 +121,9 @@ define('file_creator', true);
 - [x] archiver un élément (accessible dans une liste cachée en bas de page)
 - [x] dupliquer un élément
 - [x] télécharger un élément
+- [x] ajouter un système d'authentification (désactivable)
 - [ ] trier les listes
 - [ ] detecter les mise a jour et mettre un message en cookie
-- [ ] détecter si localhost ou hebergement et faire une Auth unique si hebergement (ou local)
 - [ ] securité sur la création de dossiers/fichiers
 - [ ] ajouter un système de recherche (bouton, CTRL F)
 - [ ] renommer un élément
