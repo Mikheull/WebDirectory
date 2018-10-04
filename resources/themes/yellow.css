@@ -14,6 +14,11 @@ header .title {font-size: 20px;margin: 15px 0;float: left;color: #e67700}
 header .actions {float: right;color: #f08c00}
 header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 
+/* Login Container */
+.login_container {text-align: center;margin: 15vh 0 0}
+.login_container h2 {margin: 5vh 0 2vh;font-size: 3em;color: #e67700;text-transform: uppercase}
+.login_container h3 {margin: 0 0 5vh;font-size: 2em;color: #e67700}
+.login_container input {font-size: 1.5em;border: none;border-radius: 3px;padding: 5px;border: solid 2px #c92a2a;color: #e67700;background: #FFF}
 
 /* Main Container */
 .container {margin: 2vh 0;float: left;color: #fcc419}
@@ -35,7 +40,8 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 .container .c-6 {width: 60%;}
 
 .create_input {margin: 10px;padding: 5px 10px;border-radius: 3px;border: solid 1px #f08c00;background: #fff9db;width: 50%;color: #e67700;font-size: 1.1em}
-
+.archived_files {margin: 15px 0;float: left;width: 100%}
+.archived_files summary {cursor: pointer}
 
 /* Modal */
 .mdl {width: 100vw;height: 100vh;position: absolute;background: rgba(241, 241, 241, 0.685);display: none;}
@@ -59,7 +65,7 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 
 
 /* PopOver */
-.act_popover {width: 15%;margin: 25px 42.5% 5px;text-align: center;display: none;float: left;position: relative; left: 0;;}
+.act_popover {width: 15%;margin: 25px 42.5% 5px;text-align: center;display: none;float: left;position: absolute; left: 0;;}
 .act_popover .body {padding: 25px 0;width: auto;text-align: center;border-radius: 3px;background: #fff9db;padding: 5px 0;color: #e67700}
 .act_popover .body ul li {display: inline-block;margin: 0 2.5px;color: #e67700;padding: 5px;cursor: pointer;}
 .act_popover .body a {color: #e67700;margin: 0;padding: 0;}
