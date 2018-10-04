@@ -1,4 +1,9 @@
 {
+    "login_title": "Connexion",
+    "login_subtitle": "L'accès a ce panel requiert une connexion",
+    "login_token": "Token ici",
+    "login_button": "Connecter",
+
     "title": "Explorateur de fichiers",
     "new_folder": "Nouveau Dossier",
     "new_file": "Nouveau Fichier",
@@ -29,6 +34,7 @@
 
     "save_button": "Sauvegarder",
     "update": "Faire la mise a jour!",
+    "archived": "Archiver",
 
     "footer_cop": "a été développé par"
 }

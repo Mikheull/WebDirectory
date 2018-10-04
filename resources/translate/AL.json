@@ -1,4 +1,9 @@
 {
+    "login_title": "Verbindung",
+    "login_subtitle": "Der Zugang hat dieses Panel, erfordert eine Verbindung",
+    "login_token": "Token hier",
+    "login_button": "Verbinden",
+
     "title": "Entdeckungsreisender von Dateien",
     "new_folder": "Neue Akte",
     "new_file": "Neue Datei",
@@ -29,6 +34,7 @@
 
     "save_button": "Schützen",
     "update": "Das Legen zu machen hat Tag!",
+    "archived": "Archivieren",
 
     "footer_cop": "ist von entwickelt gewesen"
 }

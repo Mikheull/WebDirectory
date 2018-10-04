@@ -1,4 +1,9 @@
 {
+    "login_title": "Connection",
+    "login_subtitle": "The access has this panel requires a connection",
+    "login_token": "Token here",
+    "login_button": "Connect",
+
     "title": "Files browser",
     "new_folder": "New Folder",
     "new_file": "New File",
@@ -29,6 +34,7 @@
 
     "save_button": "Save",
     "update": "Make the update!",
+    "archived": "Archive",
 
     "footer_cop": "was developed by"
 }

@@ -1,4 +1,9 @@
 {
+    "login_title": "Conexión",
+    "login_subtitle": "El acceso tiene este panel requiere una conexión",
+    "login_token": "Token aquí",
+    "login_button": "Conectar",
+
     "title": "Explorador de ficheros",
     "new_folder": "Nueva Carpeta",
     "new_file": "Nueva Archivo",
@@ -29,6 +34,7 @@
 
     "save_button": "Salvaguardar",
     "update": "¡ Hacer la postura tiene día!",
+    "archived": "Archivar",
 
     "footer_cop": "fue desarrollado por"
 }
