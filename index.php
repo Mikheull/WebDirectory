@@ -273,7 +273,7 @@ function getIconExt($extension){
     <?php
 
     // BUG sur le isset
-    if(isset($_SESSION['connected'])){
+    if(!isset($_SESSION['connected'])){
         
         ?>
         <div class="login_container">
