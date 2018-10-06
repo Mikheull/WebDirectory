@@ -66,6 +66,7 @@ define('langage', 'FR');
 - [x] EN
 - [x] ES
 - [x] AL
+- [x] IT
 <br>
 Ou
 
@@ -101,6 +102,24 @@ Définir un mot de passe (changer celui par défaut ! (lors d'une update il sera
 ```php
 define('token', 'root');
 ```
+<br>
+
+7) Options des notifications:<br>
+Activer ou non (true - false)
+```php
+define('notifications', true);
+```
+Modifier l'emplacement
+```php
+define('notifications_position', 'top-center');
+```
+- [x] top-left
+- [x] top-center
+- [x] top-right
+- [x] bottom-left
+- [x] bottom-center
+- [x] bottom-right
+
 <br><hr>
 
 ### TO-DO :
@@ -122,9 +141,10 @@ define('token', 'root');
 - [x] dupliquer un élément
 - [x] télécharger un élément
 - [x] ajouter un système d'authentification (désactivable)
+- [x] securité sur la création de dossiers/fichiers
+- [x] ajouter des popups ( d'erreur, de succes, de confirmations )
 - [ ] trier les listes
 - [ ] detecter les mise a jour et mettre un message en cookie
-- [ ] securité sur la création de dossiers/fichiers
 - [ ] ajouter un système de recherche (bouton, CTRL F)
 - [ ] renommer un élément
 - [ ] ajouter les packs d'icons
@@ -132,7 +152,6 @@ define('token', 'root');
 - [ ] cloner un fichier / dossier dans un AUTRE dossier
 - [ ] améliorer la vitesse d'affichage, afficher uniquement des divs vides au début, puis les remplir avec le chargement
 - [ ] intégrer GoogleDrive, Dropbox et GitHub pour stocker les fichiers/dossiers
-- [ ] ajouter des popups ( d'erreur, de succes, de confirmations )
 - [ ] rendre compatible tout navigateur, tout OS
 - [ ] rendre responsive l'outil
 - [ ] créer le site de presentation de cet outil (page github)
