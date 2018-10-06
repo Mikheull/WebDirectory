@@ -117,7 +117,7 @@ define('langage', 'https://votre-lien.fr')
 *Activer / Désactiver des options*
 remplacer **value** par un true (oui) ou false (non)
 
-**Syntaxe**
+**Syntaxe** <br> 
 *Outil de création de fichiers*
 ```php
 define('file_creator', 'value')
@@ -180,41 +180,55 @@ define('notifications_position', 'value')
 define('notifications_position', 'top-center')
 ```
 
----
-#### Developers
 
 
+Developement
+------
 
-### TO-DO :
-- [x] affichage des fichiers/dossiers
-- [x] support des icons de fichiers
-- [x] fonction de retour en arriere
-- [x] création de dossier
-- [x] création de fichier
-- [x] ajouter les traductions
-- [x] faire le menu d'aide
-- [x] ajouter les raccourcis clavier
-- [x] editer les réglages de configuration directement dans WebIE
-- [x] effectuer une mise a jour
-- [x] ajouter des nouveaux thèmes
-- [x] créer la possibilité d'ajouter un theme custom 
-- [x] créer la possibilité d'ajouter un langage custom 
-- [x] supprimer un élément
-- [x] archiver un élément (accessible dans une liste cachée en bas de page)
-- [x] dupliquer un élément
-- [x] télécharger un élément
-- [x] ajouter un système d'authentification (désactivable)
-- [x] securité sur la création de dossiers/fichiers
-- [x] ajouter des popups ( d'erreur, de succes, de confirmations )
-- [ ] trier les listes
-- [ ] detecter les mise a jour et mettre un message en cookie
-- [ ] ajouter un système de recherche (bouton, CTRL F)
-- [ ] renommer un élément
-- [ ] ajouter les packs d'icons
-- [ ] ajouter plus de compatiblité d'icons de fichiers
-- [ ] cloner un fichier / dossier dans un AUTRE dossier
-- [ ] améliorer la vitesse d'affichage, afficher uniquement des divs vides au début, puis les remplir avec le chargement
-- [ ] intégrer GoogleDrive, Dropbox et GitHub pour stocker les fichiers/dossiers
-- [ ] rendre compatible tout navigateur, tout OS
-- [ ] rendre responsive l'outil
-- [ ] créer le site de presentation de cet outil (page github)
+##### Release History
+
+<details>
+ <summary>1.0</summary>
+ Soon
+</details>
+
+<details>
+ <summary>1.1</summary>
+ Soon
+</details>
+
+##### TO-DO
+| Status        | Nom           | Version  |
+| --- | --- | --- |
+| ✅      | affichage des fichiers/dossiers | 1.0 |
+| ✅      | support des icons de fichiers | 1.0 |
+| ✅      | fonction de retour en arriere | 1.0 |
+| ✅      | création de dossier | 1.0 |
+| ✅      | création de fichier | 1.0 |
+| ✅      | ajouter les traductions | 1.0 |
+| ✅      | faire le menu d'aide | 1.0 |
+| ✅      | ajouter les raccourcis clavier | 1.0 |
+| ✅      | editer les réglages de configuration directement dans WebIE | 1.0 |
+| ✅      | effectuer une mise a jour | 1.0 |
+| ✅      | ajouter des nouveaux thèmes | 1.0 |
+| ✅      | créer la possibilité d'ajouter un theme custom | 1.0 |
+| ✅      | créer la possibilité d'ajouter un langage custom | 1.0 |
+| ✅      | supprimer un élément | 1.0 |
+| ✅      | archiver un élément (accessible dans une liste cachée en bas de page) | 1.0 |
+| ✅      | dupliquer un élément | 1.0 |
+| ✅      | télécharger un élément | 1.0 |
+| ✅      | ajouter un système d'authentification (désactivable) | 1.0 |
+| ✅      | securité sur la création de dossiers/fichiers | 1.0 |
+| ✅      | ajouter des popups ( d'erreur, de succes, de confirmations ) | 1.0 |
+| :x:     | trier les listes | :x: |
+| :x:     | detecter les mise a jour et mettre un message en cookie | :x: |
+| :x:     | ajouter un système de recherche (bouton, <kbd> CTRL F </kbd>) | :x: |
+| :x:     | renommer un élément | :x: |
+| :x:     | ajouter les packs d'icons | :x: |
+| :x:     | ajouter plus de compatiblité d'icons de fichiers | :x: |
+| :x:     | cloner un fichier / dossier dans un AUTRE dossier | :x: |
+| :x:     | améliorer la vitesse d'affichage, afficher uniquement des divs vides au début, puis les remplir avec le chargement | :x: |
+| :x:     | intégrer GoogleDrive, Dropbox et GitHub pour stocker les fichiers/dossiers | :x: |
+| :x:     | rendre compatible tout navigateur, tout OS | :x: |
+| :x:     | rendre responsive l'outil | :x: |
+| :x:     | créer le site de presentation de cet outil (page github) | :x: |
