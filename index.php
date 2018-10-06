@@ -18,7 +18,7 @@ define('date_format', 'j-n-Y H:i');
 
 /**
  * modification des messages
- * vous pouvez sélectionner le langage qui vous convient en changeant par ( FR - EN - ES - AL (voir les langages sur le github))
+ * vous pouvez sélectionner le langage qui vous convient en changeant par ( FR - EN - ES - AL - IT (voir les langages sur le github))
  * ou bien installer le votre en changeant par ( custom ) et en indiquant le lien du fichier ci-dessous
  * 
  */
@@ -44,6 +44,7 @@ define('folder_creator', true);
 define('element_edit', true);
 
 
+
 /**
  * Ajouter une Connexion
  * 
@@ -52,6 +53,19 @@ define('auth', false);
 // Modifier ce token par le votre
 define('token', 'root');
 
+
+/**
+ * Système de notifications
+ * vous pouvez sélectionner l'emplacement qui vous convient pour les notifications en changeant par
+ * top-left
+ * top-center
+ * top-right
+ * bottom-left
+ * bottom-center
+ * bottom-right
+ */
+define('notifications', true);
+define('notifications_position', 'top-center');
 
 
 
@@ -102,18 +116,39 @@ $page_name = $explode[sizeof($explode) - 2];
  * Création de fichiers / dossiers
  */
 if(isset($_POST['mode'])){
-    if($_POST['mode'] == 'folder'){
-        if(isset($_POST['name'])){
-            mkdir($_POST['name'], 0777); 
-            file_put_contents($_POST['name'].'/index.php', fopen("index.php", 'r'));
+    if(isset($_POST['name'])){
+        if($_POST['mode'] == 'folder'){
+            foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
+                if($file -> getFilename() == $_POST['name'] && $file->isDir()){
+                    $error = true;
+                }
+            }
+            if(!isset($error)){
+                mkdir($_POST['name'], 0777); 
+                file_put_contents($_POST['name'].'/index.php', fopen("index.php", 'r'));
+                ?> <script> notifme('<?= $json_message ->{'notif_folder_created'} ?>', 'success'); </script> <?php
+            }else{
+                ?> <script> notifme('<?= $json_message ->{'notif_error_name_already_taken'} ?>', 'error'); </script> <?php
+            }
+        
+        }
+
+        if($_POST['mode'] == 'file'){
+            foreach(new DirectoryIterator(dirname(__FILE__)) as $file ){
+                if($file -> getFilename() == $_POST['name'] && !$file->isDir()){
+                    $error = true;
+                }
+            }
+            if(!isset($error)){
+                $create = fopen($_POST['name'], 'w');
+                fputs($create, ' ');
+                ?> <script> notifme('<?= $json_message ->{'notif_file_created'} ?>', 'success'); </script> <?php
+            }else{
+                ?> <script> notifme('<?= $json_message ->{'notif_error_name_already_taken'} ?>', 'error'); </script> <?php
+            }
         }
     }
-    if($_POST['mode'] == 'file'){
-        if(isset($_POST['name'])){
-            $create = fopen($_POST['name'], 'w');
-            fputs($create, ' ');
-        }
-    }
+    
 }
 
 
@@ -129,12 +164,14 @@ if(isset($_POST['theme'])){
 
     $fin = file_put_contents('index.php', $replace);
     ?> <script> window.location.reload(true); </script> <?php
+    ?> <script> notifme('<?= $json_message ->{'notif_config_save'} ?>', 'success'); </script> <?php
 }
 
 
 if(isset($_POST['update'])){
     file_put_contents('index.php', fopen(cdn_link ."/index.php", 'r'));
     ?> <script> window.location.reload(true); </script> <?php
+    ?> <script> notifme('<?= $json_message ->{'notif_updated'} ?>', 'success'); </script> <?php
 }
 
 
@@ -146,20 +183,24 @@ if(element_edit == true){
             $name = $_POST['name'];
             $new_name = '___archived___'.$_POST['name'];
             rename($name, $new_name);
+            ?> <script> notifme('<?= $json_message ->{'notif_file_archived'} ?>', 'success'); </script> <?php
         }
         if($_POST['act'] == 'unarchive'){
             $name = $_POST['name'];
             $new_name = str_replace("___archived___", "", $name);
             rename($name, $new_name);
+            ?> <script> notifme('<?= $json_message ->{'notif_file_unarchived'} ?>', 'success'); </script> <?php
         }
         if($_POST['act'] == 'delete'){
             $name = $_POST['name'];
             unlink($name);
+            ?> <script> notifme('<?= $json_message ->{'notif_file_deleted'} ?>', 'success'); </script> <?php
         }
         if($_POST['act'] == 'clone'){
             $name = $_POST['name'];
             $new_name = '1-'.$_POST['name'];
             file_put_contents($new_name, fopen($name, 'r'));
+            ?> <script> notifme('<?= $json_message ->{'notif_file_clone'} ?>', 'success'); </script> <?php
         }
     }
 }
@@ -170,14 +211,14 @@ if(auth == true){
         $token = $_POST['token'];
         if(token == $token){
             $_SESSION['connected'] = true;
+            ?> <script> notifme('<?= $json_message ->{'notif_login'} ?>', 'success'); </script> <?php
         }
 
     }
     if(isset($_POST['logout'])){
         unset($_SESSION['connected']);
+        ?> <script> notifme('<?= $json_message ->{'notif_logout'} ?>', 'success'); </script> <?php
     }
-}else{
-    $_SESSION['connected'] = true ;
 }
 
 
@@ -217,7 +258,7 @@ function getIconExt($extension){
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
 
-<script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
     <title><?= $page_name .' - '. $json_message ->{'title'} ?></title>
 </head>
 
@@ -227,8 +268,12 @@ function getIconExt($extension){
 
 
 <body>
+    <div class="notif_container"> <span class="notification <?= notifications_position ?>"> </span> </div>
+    
     <?php
-    if(!isset($_SESSION['connected'])){
+
+    // BUG sur le isset
+    if(isset($_SESSION['connected'])){
         
         ?>
         <div class="login_container">
@@ -243,7 +288,6 @@ function getIconExt($extension){
     }else{
 
     ?>
-
 
     <header>
         <div class="centered">
@@ -685,6 +729,10 @@ function getIconExt($extension){
                 e.preventDefault();
                 $( ".act_popover" ).hide();
             }
+            if ( $( ".notification" ).length ) {
+                e.preventDefault();
+                removeNotif();
+            }
             return false;
         }
 
@@ -766,6 +814,7 @@ function getIconExt($extension){
                 $( ".input_file" ).remove();
                 $( "#new" ).append( "<li class='item add_item input_folder'> <div class='columns c-6 title'> <i class='far fa-folder'></i> <input type='text' class='create_input' placeholder='<?= $json_message ->{'folder_name'} ?>'> </div> </li>" );
                 $( "input" ).focus();
+                notifme('<?= $json_message ->{'notif_create_folder'} ?>', 'info');
             }
         <?php }
         if(file_creator == true){ ?> 
@@ -773,20 +822,37 @@ function getIconExt($extension){
                 $( ".input_folder" ).remove();
                 $( "#new" ).append( "<li class='item add_item input_file'> <div class='columns c-6 title'> <i class='far fa-file'></i> <input type='text' class='create_input' placeholder='<?= $json_message ->{'file_name'} ?>'> </div> </li>" );
                 $( "input" ).focus();
+                notifme('<?= $json_message ->{'notif_create_file'} ?>', 'info');
             }
         <?php }
     ?>
     
-
-
-    function isMacintosh() {
-        return navigator.platform.indexOf('Mac') > -1
+    // Notifications
+    function notifme(message, mode){
+        <?php if(notifications == true){ ?>
+            removeNotif();
+            $( ".notification" ).fadeIn("slow").append(message); 
+            if(mode == 'success'){
+                $( ".notification" ).css( "background", "#DFF2BF" ); 
+                $( ".notification" ).css( "color", "4F8A10" ); 
+            }
+            if(mode == 'error'){
+                $( ".notification" ).css( "background", "#FFBABA" ); 
+                $( ".notification" ).css( "color", "D8000C" ); 
+            }
+            if(mode == 'info'){
+                $( ".notification" ).css( "background", "#BDE5F8" ); 
+                $( ".notification" ).css( "color", "00529B" );
+            }
+        <?php } ?>
     }
-
-    function isWindows() {
-        return navigator.platform.indexOf('Win') > -1
+    function removeNotif(){
+        $( ".notification" ).empty();
+        $( ".notification" ).hide();
     }
-    //alert(isWindows());
+    $( ".notification" ).click(function(){
+        removeNotif();
+    });
 
 </script>
 
