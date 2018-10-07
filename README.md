@@ -1,185 +1,44 @@
 # WebIE
 
 ![alt text](https://i.imgur.com/rWCAkUe.png "Logo Title Text 1") <br><br>
-[WebIE](https://mikhaelbailly.fr/tools/WebIE) est un explorateur de **fichiers** / **dossiers** pour le web. <br>
-Il inclus une multitude d'outils utiles pour la gestion de vos fichiers <br>
+[WebIE](https://mikhaelbailly.fr/tools/WebIE) is an explorer of **files** / **folders** for the web. <br>
+It includes a multitude of useful tools for managing your files <br>
 
 Features
 ------
-- Liste de tout les fichiers du répertoire
-- Outil de création de fichiers
-- Outil de gestion de fichiers
-- Raccourcis claviers
-- Système d'authentifications
-- Multi-langage ( customisable )
-- Multi-thème ( customisable )
+- List of all files in the directory
+- File creation tool
+- Folder creation tool
+- Keyboard shortcuts
+- Authentication system
+- Multi-language ( customizable )
+- Multi-theme ( customizable )
 <br><br>
 
 Requirements
 ------
-- Un serveur php
-- Des fichiers
+- A php server
+- Some files
 <br><br>
 
 Installation
 ------
-Pour l'installation, il vous suffit **uniquement** de télécharger le fichier [index.php](https://github.com/Mikheull/WebIE/blob/master/index.php) et de l'ajouter dans les répertoires voulus.
+For installation, you only need to download the file[index.php] (https://github.com/Mikheull/WebIE/blob/master/index.php) and add it to the desired directories.
 <br><br>
 
 Configuration
 ------
-Une **très grande** partie de **WebIE** est ouverte a la configuration, pour vous permettre d'avoir votre version parfaite.<br>
-*Les configurations sont remises par défaut lors d'une mise a jour*
+A **very large** part of **WebIE** is open for configuration, to allow you to have your perfect version.
+*Configurations are reset by default during an update*
 
 
-**1. Les thèmes** <br>
-*Installez le thème qui vous plait, ou créez le votre* <br>
-remplacer **value** par un thème parmis ceux ci-dessous
-- [x] dark
-- [x] light
-- [x] blue
-- [x] red
-- [x] green
-- [x] orange
-- [x] purple
-- [x] yellow
-
-ou bien par **custom** pour définir le votre. Si vous choisissez **custom** vous devrez indiquer votre lien. 
-
-**Syntaxe**
-```php
-define('theme', 'value')
-```
-**Exemple**
-```php
-define('theme', 'dark')
-```
-**UNIQUEMENT POUR LES CUSTOM**
-```php
-define('theme_custom_link', 'https://votre-lien.fr')
-```
-
-<br><br> 
-**2. Le format de date** <br>
-*Modifiez votre format de date, une documentation est disponible [ici](http://php.net/manual/fr/function.date.php)* <br>
-remplacer **value** par votre patern
-
-**Syntaxe**
-```php
-define('date_format', 'value')
-```
-**Exemple**
-```php
-define('date_format', 'j-n-Y H:i:s')
-```
-
-<br><br> 
-**3. Les icons de fichiers** <br>
-*Personnalisez vos icons de fichiers*
-remplacer **value** par un pack disponible ci-dessous **(soon)**
-
-**Syntaxe**
-```php
-define('icon_pack', 'value')
-```
-**Exemple**
-```php
-define('icon_pack', 'font-awesome')
-```
-
-<br><br> 
-**4. Les messages** <br>
-*Prenez votre langage favori*
-remplacer **value** par un langage disponible ci-dessous
-- [x] FR
-- [x] EN
-- [x] ES
-- [x] AL
-- [x] IT
-
-ou bien par **custom** pour définir le votre. Si vous choisissez **custom** vous devrez indiquer votre lien. 
-
-**Syntaxe**
-```php
-define('langage', 'value')
-```
-**Exemple**
-```php
-define('langage', 'FR')
-```
-**UNIQUEMENT POUR LES CUSTOM**
-```php
-define('langage', 'https://votre-lien.fr')
-```
-
-<br><br> 
-**5. Quelques réglages** <br>
-*Activer / Désactiver des options*
-remplacer **value** par un true (oui) ou false (non)
-
-**Syntaxe** <br> 
-*Outil de création de fichiers*
-```php
-define('file_creator', 'value')
-```
-*Outil de création de dossiers*
-```php
-define('folder_creator', 'value')
-```
-*Outil de gestion de fichiers*
-```php
-define('element_edit', 'value')
-```
-*Affichage de notifications*
-```php
-define('notifications', value);
-```
-
-<br><br> 
-**6. Authentification** <br>
-*Ajouter une authentification*
-remplacer **value** par true (oui) ou false (non)
-
-**Syntaxe**
-```php
-define('auth', 'value')
-```
-**Exemple**
-```php
-define('auth', 'false')
-```
-
-remplacer **value** par un mot de passe sécurisé
-
-**Syntaxe**
-```php
-define('token', 'value')
-```
-**Exemple**
-```php
-define('token', 'MmPq04rSA24N0aS4')
-```
-
-<br><br> 
-**7. Les notifications** <br>
-*Configurez vos notifications*
-remplacer **value** par une position disponible ci-dessous
-- [x] top-left
-- [x] top-center
-- [x] top-right
-- [x] bottom-left
-- [x] bottom-center
-- [x] bottom-right
-
-**Syntaxe**
-```php
-define('notifications_position', 'value')
-```
-**Exemple**
-```php
-define('notifications_position', 'top-center')
-```
-
+**1. [Themes](https://github.com/Mikheull/WebIE/wiki/Themes)** <br>
+**2. [Date Format](https://github.com/Mikheull/WebIE/wiki/Date-Format)** <br>
+**3. [Icons Files](https://github.com/Mikheull/WebIE/wiki/Icons)** <br>
+**4. [Translations](https://github.com/Mikheull/WebIE/wiki/Translations)** <br>
+**5. [Some settings](https://github.com/Mikheull/WebIE/wiki/Some-settings)** <br>
+**6. [Authentification](https://github.com/Mikheull/WebIE/wiki/Authentification)** <br>
+**7. [Notifications](https://github.com/Mikheull/WebIE/wiki/Notifications)** <br>
 
 
 Developement
