@@ -217,11 +217,11 @@ Developement
 | ✅      | archiver un élément (accessible dans une liste cachée en bas de page) | 1.0 |
 | ✅      | dupliquer un élément | 1.0 |
 | ✅      | télécharger un élément | 1.0 |
-| ✅      | ajouter un système d'authentification (désactivable) | 1.0 |
-| ✅      | securité sur la création de dossiers/fichiers | 1.0 |
-| ✅      | ajouter des popups ( d'erreur, de succes, de confirmations ) | 1.0 |
+| ✅      | ajouter un système d'authentification (désactivable) | 1.1 |
+| ✅      | securité sur la création de dossiers/fichiers | 1.1 |
+| ✅      | ajouter des popups ( d'erreur, de succes, de confirmations ) | 1.1 |
+| ✅      | detecter les mise a jour et mettre un message | 1.1 |
 | :x:     | trier les listes | :x: |
-| :x:     | detecter les mise a jour et mettre un message en cookie | :x: |
 | :x:     | ajouter un système de recherche (bouton, <kbd> CTRL F </kbd>) | :x: |
 | :x:     | renommer un élément | :x: |
 | :x:     | ajouter les packs d'icons | :x: |
