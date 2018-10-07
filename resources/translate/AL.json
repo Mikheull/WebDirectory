@@ -6,7 +6,7 @@
 
     "title": "Datei-Explorer",
     "new_folder": "Neuer Ordner",
-    "new_file": "New File",
+    "new_file": "Neue Datei",
     "name": "Name",
     "size": "Größe",
     "date": "Datum der Änderung",
@@ -32,13 +32,14 @@
     "notif_file_deleted": "Löschen der erfolgreichen Datei!",
     "notif_file_clone": "Die Datei wurde dupliziert!",
     "notif_login": "Login erfolgreich!",
+    "notif_wrong_password": "Das Passwort ist falsch",
     "notif_logout": "Abmeldung erfolgreich!",
     "notif_create_folder": "Gib deiner Datei einen Namen",
     "notif_create_file": "Gib deiner Datei einen Namen (mit einer Erweiterung)",
 
     "config_mdl_title": "Konfiguration",
     "config_mdl_subtitle": "Erstelle einfach deine Konfiguration.",
-    "config_mdl_theme_title": "Theme",
+    "config_mdl_theme_title": "Thema",
     "config_mdl_theme_subtitle": "Thema leicht ändern.",
     "config_mdl_date_title": "Datumsformat",
     "config_mdl_date_subtitle": "Konfiguriere dein eigenes Datumsformat.",
@@ -48,6 +49,7 @@
 
     "save_button": "Save",
     "update": "Mach das Update!",
+    "update_available": "Update verfügbar",
     "archived": "Archivieren",
 
     "footer_cop": "wurde entwickelt von"

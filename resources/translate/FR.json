@@ -32,6 +32,7 @@
     "notif_file_deleted": "Suppression du fichier réussie !",
     "notif_file_clone": "Le fichier a été dupliquer !",
     "notif_login": "Connexion réussie !",
+    "notif_wrong_password": "Le mot de passe est incorrect",
     "notif_logout": "Déconnexion réussie !",
     "notif_create_folder": "Donnez un nom a votre dossier",
     "notif_create_file": "Donnez un nom (avec une extension) a votre fichier",
@@ -48,6 +49,7 @@
 
     "save_button": "Sauvegarder",
     "update": "Faire la mise a jour!",
+    "update_available": "Mise a jour disponible",
     "archived": "Archiver",
 
     "footer_cop": "a été développé par"

@@ -32,6 +32,7 @@
     "notif_file_deleted": "Deletion of the successful file!",
     "notif_file_clone": "The file has been duplicated!",
     "notif_login": "Login successful!",
+    "notif_wrong_password": "The password is incorrect",
     "notif_logout": "Logout successful!",
     "notif_create_folder": "Give a name to your file",
     "notif_create_file": "Give a name (with an extension) to your file",
@@ -48,6 +49,7 @@
 
     "save_button": "Save",
     "update": "Do the update!",
+    "update_available": "Update available",
     "archived": "Archive",
 
     "footer_cop": "was developed by"

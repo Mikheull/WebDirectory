@@ -1,5 +1,5 @@
 {
-    "login_titolo": "Login",
+    "login_titolo": "Accedi",
     "login_subtitle": "L'accesso a questo pannello richiede una connessione",
     "login_token": "Gettone qui",
     "login_button": "Collega",
@@ -32,13 +32,14 @@
     "notif_file_deleted": "Cancellazione del file di successo!",
     "notif_file_clone": "Il file è stato duplicato!",
     "notif_login": "Login riuscito!",
+    "notif_wrong_password": "La password non è corretta",
     "notif_logout": "Logout riuscito! Notif_logout riuscito!",
     "notif_create_folder": "Dai un nome al tuo file",
     "notif_create_file": "Dai un nome (con estensione) al tuo file",
 
-    "config_mdl_title": "Configuration",
+    "config_mdl_title": "Configurazione",
     "config_mdl_subtitle": "Crea la tua configurazione",
-    "config_mdl_theme_title": "Theme",
+    "config_mdl_theme_title": "Tema",
     "config_mdl_theme_subtitle": "Cambia tema facilmente",
     "config_mdl_date_title": "Formato data",
     "config_mdl_date_subtitle": "Configurare il proprio formato di data",
@@ -48,6 +49,7 @@
 
     "save_button": "Salva",
     "update": "Fai l'aggiornamento!",
+    "update_available": "Aggiornamento disponibile",
     "archived": "Archivio",
 
     "footer_cop": "è stato sviluppato da"

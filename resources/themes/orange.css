@@ -74,12 +74,12 @@ header .actions ul li {float: right;font-size: 15px;margin: 12.5px 5px;}
 /* Notifications */
 .notif_container{ width: 100%;text-align: center;position:fixed;}
 .notification {z-index: 9999;display: none;padding: 5px 15px;border-radius: 3px;cursor: pointer;}
-.notif_container .notification.top-left{ position: relative; top: 15px;left: 15px}
+.notif_container .notification.top-left{ position: relative; top: 15px;float: left;margin-left: 15px}
 .notif_container .notification.top-center{ position: relative; top: 15px;}
-.notif_container .notification.top-right{ position: relative; top: 15px;right: 15px}
-.notif_container .notification.bottom-left{ position: relative; bottom: 15px;left: 15px}
-.notif_container .notification.bottom-center{ position: relative; bottom: 15px;}
-.notif_container .notification.bottom-right{ position: relative; bottom: 15px;right: 15px}
+.notif_container .notification.top-right{ position: relative; top: 15px;right: 15px;float: right;margin-right: 15px}
+.notif_container .notification.bottom-left{ position: relative; top: 95vh;float: left;margin-left: 15px}
+.notif_container .notification.bottom-center{ position: relative; top: 95vh;}
+.notif_container .notification.bottom-right{ position: relative; top: 95vh;right: 15px;float: right;margin-right: 15px}
 
 /* Footer */
 footer {text-align: center;margin: 50px 0 0;float: left;color: #e8590c}
