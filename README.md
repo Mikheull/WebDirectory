@@ -224,7 +224,7 @@ Developement
 | :x:     | trier les listes | :x: |
 | :x:     | mettre a jour en sauvegardant les réglages | :x: |
 | :x:     | ajouter un système de recherche (bouton, <kbd> CTRL F </kbd>) | :x: |
-| :x:     | ajouter toutes les configurations dans le panel <kbd> CTRL C </kbd> | :x: |
+| :x:     | ajouter toutes les configurations dans le panel <kbd> SHIFT C </kbd> | :x: |
 | :x:     | générer des structures web personalisés (template) | :x: |
 | :x:     | créer un nouveau projet CMS (wordpress - prestashop etc ) | :x: |
 | :x:     | renommer un élément | :x: |
