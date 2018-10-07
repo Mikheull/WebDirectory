@@ -1,12 +1,13 @@
 <?php
+define('WebIE_version', '1.1');
 /**
  * modification du thème de la page
  * vous pouvez utiliser un des thèmes disponibles en changeant par ( dark - light )
  * ou bien en choisir un custom en changeant par ( custom ) et en indiquant le lien du fichier css ci-dessous
  * 
  */
-define('theme', 'dark');
-define('theme_custom_link', 'https://votre-lien.fr');
+define('theme', 'custom');
+define('theme_custom_link', 'http://localhost:8888/WebIE/resources/themes/dark.css');
 
 /**
  * modification du format de la date
@@ -49,8 +50,8 @@ define('element_edit', true);
  * Ajouter une Connexion
  * 
  */
-define('auth', false);
 // Modifier ce token par le votre
+define('auth', false);
 define('token', 'root');
 
 
@@ -86,6 +87,16 @@ else{ $link_message = cdn_link.'resources/translate/'. langage .'.json'; }
 $get = file_get_contents($link_message);
 $json_message = json_decode($get);
 
+
+
+/**
+ * Fonction de détection de mise a jour
+ */
+$git_api = file_get_contents('http://api.github.com/repos/Mikheull/WebIE/releases/latest', false, stream_context_create(['http' => ['method' => 'GET','header' => ['User-Agent: PHP']]]));
+$git = json_decode($git_api);
+if(WebIE_version !== $git ->{'tag_name'}){
+    ?> <script> console.log('<?= $json_message ->{'update_available'} ?>'); </script> <?php
+}
 
 
 /**
@@ -207,21 +218,23 @@ if(element_edit == true){
 
 
 if(auth == true){
+    print_r($_SESSION);
     if(isset($_POST['login'])){
         $token = $_POST['token'];
+
         if(token == $token){
-            $_SESSION['connected'] = true;
+            $_SESSION[md5($page_name)] = true;
             ?> <script> notifme('<?= $json_message ->{'notif_login'} ?>', 'success'); </script> <?php
+        }else{
+            ?> <script> notifme('<?= $json_message ->{'notif_wrong_password'} ?>', 'success'); </script> <?php
         }
 
     }
     if(isset($_POST['logout'])){
-        unset($_SESSION['connected']);
+        unset($_SESSION[md5($page_name)]);
         ?> <script> notifme('<?= $json_message ->{'notif_logout'} ?>', 'success'); </script> <?php
     }
 }
-
-
 
 function getIconExt($extension){
     if($extension == 'php'){return 'fab fa-php';}
@@ -268,12 +281,9 @@ function getIconExt($extension){
 
 
 <body>
-    <div class="notif_container"> <span class="notification <?= notifications_position ?>"> </span> </div>
     
     <?php
-
-    // BUG sur le isset
-    if(isset($_SESSION['connected'])){
+    if(!isset($_SESSION[md5($page_name)]) && auth == true){
         
         ?>
         <div class="login_container">
@@ -288,7 +298,7 @@ function getIconExt($extension){
     }else{
 
     ?>
-
+    
     <header>
         <div class="centered">
         <div class="title">
@@ -476,7 +486,7 @@ function getIconExt($extension){
     </section>
 
 
-    
+    <div class="notif_container"> <span class="notification <?= notifications_position ?>"> </span> </div>
     <footer>
         <div class="centered">
             <p><a href="https://github.com/Mikheull/WebIE">WebIE</a> <?= $json_message ->{'footer_cop'} ?> <a href="https://mikhaelbailly.fr/">Mikhaël Bailly</a></p>
