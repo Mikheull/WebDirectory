@@ -6,8 +6,8 @@ define('WebIE_version', '1.1');
  * ou bien en choisir un custom en changeant par ( custom ) et en indiquant le lien du fichier css ci-dessous
  * 
  */
-define('theme', 'custom');
-define('theme_custom_link', 'http://localhost:8888/WebIE/resources/themes/dark.css');
+define('theme', 'dark');
+define('theme_custom_link', 'https://votre-lien.fr');
 
 /**
  * modification du format de la date
@@ -15,7 +15,7 @@ define('theme_custom_link', 'http://localhost:8888/WebIE/resources/themes/dark.c
  * documentation du format ici -> http://php.net/manual/fr/function.date.php
  * 
  */
-define('date_format', 'j-n-Y H:i');
+define('date_format', 'j-n-Y H:i:s');
 
 /**
  * modification des messages
@@ -38,8 +38,8 @@ define('', '');
  * 
  */
 // A mettre quand je lance en prod
-// define('cdn_link', 'https://cdn.rawgit.com/Mikheull/WebIE/master/');
-define('cdn_link', 'https://rawgit.com/Mikheull/WebIE/master/');
+// define('cdn_link', 'https://gitcdn.xyz/repo/Mikheull/WebIE/master/');
+define('cdn_link', 'https://gitcdn.xyz/repo/Mikheull/WebIE/master/');
 define('file_creator', true);
 define('folder_creator', true);
 define('element_edit', true);
@@ -205,6 +205,7 @@ if(element_edit == true){
         if($_POST['act'] == 'delete'){
             $name = $_POST['name'];
             unlink($name);
+            // rmdir($name);
             ?> <script> notifme('<?= $json_message ->{'notif_file_deleted'} ?>', 'success'); </script> <?php
         }
         if($_POST['act'] == 'clone'){
@@ -259,16 +260,12 @@ function getIconExt($extension){
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/reset.css">
+    <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css">
     <?php
     if( theme == 'custom'){
         ?> <link rel="stylesheet" href="<?= theme_custom_link ?>"> <?php
-    }else{
-        ?> <link rel="stylesheet" href="<?= cdn_link ?>resources/themes/<?= theme ;?>.css"> <?php
-
-
     }
     ?>
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
 
     <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
@@ -585,6 +582,7 @@ function getIconExt($extension){
                                 if( langage !== 'EN'){ ?> <option value="EN">EN</option> <?php }
                                 if( langage !== 'ES'){ ?> <option value="ES">ES</option> <?php }
                                 if( langage !== 'AL'){ ?> <option value="AL">AL</option> <?php }
+                                if( langage !== 'IT'){ ?> <option value="IT">IT</option> <?php }
                             ?>
                         </select>
                     </div>
