@@ -1,0 +1,48 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;}
+a {text-decoration: none;}
+html, body {font-family: 'Nunito';font-weight: 600}
+
+
+body {background: #F8F9FA;color: #252527}
+a:visited, a:link {color: #1864ab;font-weight: bold}
+.UI .col-1 {width: 8.3%}
+.UI .col-2 {width: 16.6%}
+.UI .col-3 {width: 24.9%}
+
+
+
+.UI {width: 80vw;margin: 0 10vw}
+.UI .heading-container {border-bottom: solid 2px rgba(22, 29, 37, 0.08);width: 100%;padding: 2vh 0}
+.UI .heading-container h1 {text-align: center;font-size: 2em;font-weight: bold}
+
+.UI .files-container {margin: 10vh 0;}
+.UI .files-container .head {display: flex;flex-direction: row;padding-bottom: 3vh}
+.UI .files-container .head span {padding-left: 1em}
+
+.UI .files-container .body {width: 100%}
+.UI .files-container .body .container .item a {display: flex;flex-direction: row}
+.UI .files-container .body .container .item {height: 60px;width: 100%;margin: 10px 0;background: #FFF;border: solid 1px rgba(22, 29, 37, 0.1);border-radius: 6px}
+.UI .files-container .body .container .item span {padding-left: 1em;line-height: 60px;font-size: .9em;color: #1d1d1d;}
