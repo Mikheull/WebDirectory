@@ -1,4 +1,4 @@
-# WebIE
+# WebIE ![Issues](https://img.shields.io/github/issues/Mikheull/WebIE) ![GitHub last commit](https://img.shields.io/github/last-commit/Mikheull/WebIE)
 
 ![alt text](https://i.imgur.com/rWCAkUe.png "Logo Title Text 1") <br><br>
 [WebIE](https://mikhaelbailly.fr/tools/WebIE) is an explorer of **files** / **folders** for the web. <br>
